@@ -1,0 +1,419 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1FF555E409C0F8B6002DD583 /* SWXMLTags.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FF555DC09C0F8B6002DD583 /* SWXMLTags.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1FF555E509C0F8B6002DD583 /* SWXMLTags.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF555DD09C0F8B6002DD583 /* SWXMLTags.m */; };
+		1FF555E609C0F8B6002DD583 /* SWXMLMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FF555DE09C0F8B6002DD583 /* SWXMLMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1FF555E709C0F8B6002DD583 /* SWXMLMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF555DF09C0F8B6002DD583 /* SWXMLMapping.m */; };
+		1FF555E809C0F8B6002DD583 /* SWXMLMappingParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FF555E009C0F8B6002DD583 /* SWXMLMappingParser.h */; settings = {ATTRIBUTES = (); }; };
+		1FF555E909C0F8B6002DD583 /* SWXMLMappingParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF555E109C0F8B6002DD583 /* SWXMLMappingParser.m */; };
+		1FF555EA09C0F8B6002DD583 /* SWXMLClassMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FF555E209C0F8B6002DD583 /* SWXMLClassMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1FF555EB09C0F8B6002DD583 /* SWXMLClassMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF555E309C0F8B6002DD583 /* SWXMLClassMapping.m */; };
+		1FF555FB09C0F8C9002DD583 /* SWXMLMemberMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FF555EF09C0F8C9002DD583 /* SWXMLMemberMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1FF555FC09C0F8C9002DD583 /* SWXMLMemberMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF555F009C0F8C9002DD583 /* SWXMLMemberMapping.m */; };
+		1FF555FD09C0F8C9002DD583 /* SWXMLStringMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FF555F109C0F8C9002DD583 /* SWXMLStringMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1FF555FE09C0F8C9002DD583 /* SWXMLStringMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF555F209C0F8C9002DD583 /* SWXMLStringMapping.m */; };
+		1FF555FF09C0F8C9002DD583 /* SWXMLDateMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FF555F309C0F8C9002DD583 /* SWXMLDateMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1FF5560009C0F8C9002DD583 /* SWXMLDateMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF555F409C0F8C9002DD583 /* SWXMLDateMapping.m */; };
+		1FF5560109C0F8C9002DD583 /* SWXMLCollectionMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FF555F509C0F8C9002DD583 /* SWXMLCollectionMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1FF5560209C0F8C9002DD583 /* SWXMLCollectionMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF555F609C0F8C9002DD583 /* SWXMLCollectionMapping.m */; };
+		1FF5560309C0F8C9002DD583 /* SWXMLNumberMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FF555F709C0F8C9002DD583 /* SWXMLNumberMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1FF5560409C0F8C9002DD583 /* SWXMLNumberMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF555F809C0F8C9002DD583 /* SWXMLNumberMapping.m */; };
+		1FF5560509C0F8C9002DD583 /* SWXMLBooleanMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FF555F909C0F8C9002DD583 /* SWXMLBooleanMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1FF5560609C0F8C9002DD583 /* SWXMLBooleanMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF555FA09C0F8C9002DD583 /* SWXMLBooleanMapping.m */; };
+		1FF5565E09C0FDC2002DD583 /* NSString+EscapingAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FF5565C09C0FDC2002DD583 /* NSString+EscapingAdditions.h */; };
+		1FF5565F09C0FDC2002DD583 /* NSString+EscapingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF5565D09C0FDC2002DD583 /* NSString+EscapingAdditions.m */; };
+		1FF556B309C100C4002DD583 /* NSString+SplitIntoLines.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FF556B109C100C4002DD583 /* NSString+SplitIntoLines.h */; };
+		1FF556B409C100C4002DD583 /* NSString+SplitIntoLines.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF556B209C100C4002DD583 /* NSString+SplitIntoLines.m */; };
+		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
+		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0867D69BFE84028FC02AAC07 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		0867D6A5FE840307C02AAC07 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
+		089C1667FE841158C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
+		1FF555DC09C0F8B6002DD583 /* SWXMLTags.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SWXMLTags.h; sourceTree = "<group>"; };
+		1FF555DD09C0F8B6002DD583 /* SWXMLTags.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = SWXMLTags.m; sourceTree = "<group>"; };
+		1FF555DE09C0F8B6002DD583 /* SWXMLMapping.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SWXMLMapping.h; sourceTree = "<group>"; };
+		1FF555DF09C0F8B6002DD583 /* SWXMLMapping.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = SWXMLMapping.m; sourceTree = "<group>"; };
+		1FF555E009C0F8B6002DD583 /* SWXMLMappingParser.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SWXMLMappingParser.h; sourceTree = "<group>"; };
+		1FF555E109C0F8B6002DD583 /* SWXMLMappingParser.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = SWXMLMappingParser.m; sourceTree = "<group>"; };
+		1FF555E209C0F8B6002DD583 /* SWXMLClassMapping.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = SWXMLClassMapping.h; sourceTree = "<group>"; };
+		1FF555E309C0F8B6002DD583 /* SWXMLClassMapping.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = SWXMLClassMapping.m; sourceTree = "<group>"; };
+		1FF555EF09C0F8C9002DD583 /* SWXMLMemberMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWXMLMemberMapping.h; sourceTree = "<group>"; };
+		1FF555F009C0F8C9002DD583 /* SWXMLMemberMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWXMLMemberMapping.m; sourceTree = "<group>"; };
+		1FF555F109C0F8C9002DD583 /* SWXMLStringMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWXMLStringMapping.h; sourceTree = "<group>"; };
+		1FF555F209C0F8C9002DD583 /* SWXMLStringMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWXMLStringMapping.m; sourceTree = "<group>"; };
+		1FF555F309C0F8C9002DD583 /* SWXMLDateMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWXMLDateMapping.h; sourceTree = "<group>"; };
+		1FF555F409C0F8C9002DD583 /* SWXMLDateMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWXMLDateMapping.m; sourceTree = "<group>"; };
+		1FF555F509C0F8C9002DD583 /* SWXMLCollectionMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWXMLCollectionMapping.h; sourceTree = "<group>"; };
+		1FF555F609C0F8C9002DD583 /* SWXMLCollectionMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWXMLCollectionMapping.m; sourceTree = "<group>"; };
+		1FF555F709C0F8C9002DD583 /* SWXMLNumberMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWXMLNumberMapping.h; sourceTree = "<group>"; };
+		1FF555F809C0F8C9002DD583 /* SWXMLNumberMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWXMLNumberMapping.m; sourceTree = "<group>"; };
+		1FF555F909C0F8C9002DD583 /* SWXMLBooleanMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWXMLBooleanMapping.h; sourceTree = "<group>"; };
+		1FF555FA09C0F8C9002DD583 /* SWXMLBooleanMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWXMLBooleanMapping.m; sourceTree = "<group>"; };
+		1FF5565C09C0FDC2002DD583 /* NSString+EscapingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+EscapingAdditions.h"; path = "../Shared/NSString+EscapingAdditions.h"; sourceTree = SOURCE_ROOT; };
+		1FF5565D09C0FDC2002DD583 /* NSString+EscapingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+EscapingAdditions.m"; path = "../Shared/NSString+EscapingAdditions.m"; sourceTree = SOURCE_ROOT; };
+		1FF556B109C100C4002DD583 /* NSString+SplitIntoLines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+SplitIntoLines.h"; path = "../Shared/NSString+SplitIntoLines.h"; sourceTree = SOURCE_ROOT; };
+		1FF556B209C100C4002DD583 /* NSString+SplitIntoLines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+SplitIntoLines.m"; path = "../Shared/NSString+SplitIntoLines.m"; sourceTree = SOURCE_ROOT; };
+		32DBCF5E0370ADEE00C91783 /* SWXMLMapping_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWXMLMapping_Prefix.pch; sourceTree = "<group>"; };
+		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8DC2EF5B0486A6940098B216 /* SWXMLMapping.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SWXMLMapping.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2F7E79907B2D74100F64583 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8DC2EF560486A6940098B216 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		034768DFFF38A50411DB9C8B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DC2EF5B0486A6940098B216 /* SWXMLMapping.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0867D691FE84028FC02AAC07 /* SWXMLMapping */ = {
+			isa = PBXGroup;
+			children = (
+				08FB77AEFE84172EC02AAC07 /* Classes */,
+				32C88DFF0371C24200C91783 /* Other Sources */,
+				089C1665FE841158C02AAC07 /* Resources */,
+				0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */,
+				034768DFFF38A50411DB9C8B /* Products */,
+			);
+			name = SWXMLMapping;
+			sourceTree = "<group>";
+		};
+		0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */,
+				1058C7B2FEA5585E11CA2CBB /* Other Frameworks */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		089C1665FE841158C02AAC07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8DC2EF5A0486A6940098B216 /* Info.plist */,
+				089C1666FE841158C02AAC07 /* InfoPlist.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		08FB77AEFE84172EC02AAC07 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				1FF5561A09C0FD77002DD583 /* String Processing */,
+				1FF555DC09C0F8B6002DD583 /* SWXMLTags.h */,
+				1FF555DD09C0F8B6002DD583 /* SWXMLTags.m */,
+				1FF555DE09C0F8B6002DD583 /* SWXMLMapping.h */,
+				1FF555DF09C0F8B6002DD583 /* SWXMLMapping.m */,
+				1FF555E009C0F8B6002DD583 /* SWXMLMappingParser.h */,
+				1FF555E109C0F8B6002DD583 /* SWXMLMappingParser.m */,
+				1FF555E209C0F8B6002DD583 /* SWXMLClassMapping.h */,
+				1FF555E309C0F8B6002DD583 /* SWXMLClassMapping.m */,
+				1FF555EE09C0F8C8002DD583 /* Member Mappings */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		1058C7B0FEA5585E11CA2CBB /* Linked Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */,
+			);
+			name = "Linked Frameworks";
+			sourceTree = "<group>";
+		};
+		1058C7B2FEA5585E11CA2CBB /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0867D6A5FE840307C02AAC07 /* AppKit.framework */,
+				D2F7E79907B2D74100F64583 /* CoreData.framework */,
+				0867D69BFE84028FC02AAC07 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		1FF555EE09C0F8C8002DD583 /* Member Mappings */ = {
+			isa = PBXGroup;
+			children = (
+				1FF555EF09C0F8C9002DD583 /* SWXMLMemberMapping.h */,
+				1FF555F009C0F8C9002DD583 /* SWXMLMemberMapping.m */,
+				1FF555F109C0F8C9002DD583 /* SWXMLStringMapping.h */,
+				1FF555F209C0F8C9002DD583 /* SWXMLStringMapping.m */,
+				1FF555F309C0F8C9002DD583 /* SWXMLDateMapping.h */,
+				1FF555F409C0F8C9002DD583 /* SWXMLDateMapping.m */,
+				1FF555F509C0F8C9002DD583 /* SWXMLCollectionMapping.h */,
+				1FF555F609C0F8C9002DD583 /* SWXMLCollectionMapping.m */,
+				1FF555F709C0F8C9002DD583 /* SWXMLNumberMapping.h */,
+				1FF555F809C0F8C9002DD583 /* SWXMLNumberMapping.m */,
+				1FF555F909C0F8C9002DD583 /* SWXMLBooleanMapping.h */,
+				1FF555FA09C0F8C9002DD583 /* SWXMLBooleanMapping.m */,
+			);
+			name = "Member Mappings";
+			sourceTree = "<group>";
+		};
+		1FF5561A09C0FD77002DD583 /* String Processing */ = {
+			isa = PBXGroup;
+			children = (
+				1FF5565C09C0FDC2002DD583 /* NSString+EscapingAdditions.h */,
+				1FF5565D09C0FDC2002DD583 /* NSString+EscapingAdditions.m */,
+				1FF556B109C100C4002DD583 /* NSString+SplitIntoLines.h */,
+				1FF556B209C100C4002DD583 /* NSString+SplitIntoLines.m */,
+			);
+			name = "String Processing";
+			sourceTree = "<group>";
+		};
+		32C88DFF0371C24200C91783 /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32DBCF5E0370ADEE00C91783 /* SWXMLMapping_Prefix.pch */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		8DC2EF500486A6940098B216 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FF555E409C0F8B6002DD583 /* SWXMLTags.h in Headers */,
+				1FF555E609C0F8B6002DD583 /* SWXMLMapping.h in Headers */,
+				1FF555E809C0F8B6002DD583 /* SWXMLMappingParser.h in Headers */,
+				1FF555EA09C0F8B6002DD583 /* SWXMLClassMapping.h in Headers */,
+				1FF555FB09C0F8C9002DD583 /* SWXMLMemberMapping.h in Headers */,
+				1FF555FD09C0F8C9002DD583 /* SWXMLStringMapping.h in Headers */,
+				1FF555FF09C0F8C9002DD583 /* SWXMLDateMapping.h in Headers */,
+				1FF5560109C0F8C9002DD583 /* SWXMLCollectionMapping.h in Headers */,
+				1FF5560309C0F8C9002DD583 /* SWXMLNumberMapping.h in Headers */,
+				1FF5560509C0F8C9002DD583 /* SWXMLBooleanMapping.h in Headers */,
+				1FF5565E09C0FDC2002DD583 /* NSString+EscapingAdditions.h in Headers */,
+				1FF556B309C100C4002DD583 /* NSString+SplitIntoLines.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		8DC2EF4F0486A6940098B216 /* SWXMLMapping */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB91AD08733DA50010E9CD /* Build configuration list for PBXNativeTarget "SWXMLMapping" */;
+			buildPhases = (
+				8DC2EF500486A6940098B216 /* Headers */,
+				8DC2EF520486A6940098B216 /* Resources */,
+				8DC2EF540486A6940098B216 /* Sources */,
+				8DC2EF560486A6940098B216 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SWXMLMapping;
+			productInstallPath = "$(HOME)/Library/Frameworks";
+			productName = SWXMLMapping;
+			productReference = 8DC2EF5B0486A6940098B216 /* SWXMLMapping.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0867D690FE84028FC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "SWXMLMapping" */;
+			hasScannedForEncodings = 1;
+			mainGroup = 0867D691FE84028FC02AAC07 /* SWXMLMapping */;
+			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
+			projectDirPath = "";
+			targets = (
+				8DC2EF4F0486A6940098B216 /* SWXMLMapping */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8DC2EF520486A6940098B216 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8DC2EF540486A6940098B216 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1FF555E509C0F8B6002DD583 /* SWXMLTags.m in Sources */,
+				1FF555E709C0F8B6002DD583 /* SWXMLMapping.m in Sources */,
+				1FF555E909C0F8B6002DD583 /* SWXMLMappingParser.m in Sources */,
+				1FF555EB09C0F8B6002DD583 /* SWXMLClassMapping.m in Sources */,
+				1FF555FC09C0F8C9002DD583 /* SWXMLMemberMapping.m in Sources */,
+				1FF555FE09C0F8C9002DD583 /* SWXMLStringMapping.m in Sources */,
+				1FF5560009C0F8C9002DD583 /* SWXMLDateMapping.m in Sources */,
+				1FF5560209C0F8C9002DD583 /* SWXMLCollectionMapping.m in Sources */,
+				1FF5560409C0F8C9002DD583 /* SWXMLNumberMapping.m in Sources */,
+				1FF5560609C0F8C9002DD583 /* SWXMLBooleanMapping.m in Sources */,
+				1FF5565F09C0FDC2002DD583 /* NSString+EscapingAdditions.m in Sources */,
+				1FF556B409C100C4002DD583 /* NSString+SplitIntoLines.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		089C1666FE841158C02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C1667FE841158C02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB91AE08733DA50010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 2;
+				FRAMEWORK_VERSION = A;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_MODEL_TUNING = G4;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SWXMLMapping_Prefix.pch;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = NO;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				INFOPLIST_FILE = Info.plist;
+				INSTALL_PATH = "$(HOME)/Library/Frameworks";
+				PRODUCT_NAME = SWXMLMapping;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Debug;
+		};
+		1DEB91AF08733DA50010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				DSTROOT = /;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				FRAMEWORK_VERSION = A;
+				GCC_FAST_OBJC_DISPATCH = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_MODEL_TUNING = G4;
+				GCC_PFE_FILE_C_DIALECTS = "objective-c objective-c++";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SWXMLMapping_Prefix.pch;
+				GCC_STRICT_ALIASING = YES;
+				GCC_TREAT_NONCONFORMANT_CODE_ERRORS_AS_WARNINGS = YES;
+				GCC_UNROLL_LOOPS = YES;
+				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = NO;
+				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				GCC_WARN_UNUSED_FUNCTION = NO;
+				GCC_WARN_UNUSED_LABEL = NO;
+				INFOPLIST_FILE = Info.plist;
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				ONLY_LINK_ESSENTIAL_SYMBOLS = YES;
+				PRODUCT_NAME = SWXMLMapping;
+				SKIP_INSTALL = NO;
+				STRIP_INSTALLED_PRODUCT = YES;
+				WRAPPER_EXTENSION = framework;
+			};
+			name = Release;
+		};
+		1DEB91B208733DA50010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+			};
+			name = Debug;
+		};
+		1DEB91B308733DA50010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				DEPLOYMENT_LOCATION = YES;
+				DEPLOYMENT_POSTPROCESSING = YES;
+				GCC_ENABLE_SSE3_EXTENSIONS = NO;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INSTALL_PATH = /Library/Frameworks/;
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				PREBINDING = NO;
+				SDKROOT = /Developer/SDKs/MacOSX10.4u.sdk;
+				STRIP_STYLE = debugging;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB91AD08733DA50010E9CD /* Build configuration list for PBXNativeTarget "SWXMLMapping" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB91AE08733DA50010E9CD /* Debug */,
+				1DEB91AF08733DA50010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "SWXMLMapping" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB91B208733DA50010E9CD /* Debug */,
+				1DEB91B308733DA50010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0867D690FE84028FC02AAC07 /* Project object */;
+}

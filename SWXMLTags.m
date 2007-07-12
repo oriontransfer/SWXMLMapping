@@ -7,8 +7,8 @@
 //
 
 #import "SWXMLTags.h"
-#import "NSString+EscapingAdditions.h"
-#import "NSString+SplitIntoLines.h"
+#import "SWApplicationSupport/NSString+EscapingAdditions.h"
+#import "SWApplicationSupport/NSString+SplitIntoLines.h"
 
 @interface SWXMLTags (Private)
 + (NSString*) indent: (NSString*)inner;

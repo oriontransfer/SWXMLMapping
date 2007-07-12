@@ -7,8 +7,8 @@
 //
 
 #import "SWXMLMappingParser.h"
-#import "NSString+EscapingAdditions.h"
-#import "NSString+SplitIntoLines.h"
+#import "SWApplicationSupport/NSString+EscapingAdditions.h"
+#import "SWApplicationSupport/NSString+SplitIntoLines.h"
 
 @implementation SWXMLMappingParser
 + defaultMemberMappings {

@@ -23,7 +23,8 @@
 		[numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
 		//[numberFormatter setFormat:@"$#,###.00;0.00;($#,##0.00)"];
 	} else if ([format isEqualToString:@"decimal"])
-		[numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+		//[numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+		[numberFormatter setFormat:@"###0.00;0;-###0.00"];
 	else if ([format isEqualToString:@"percent"])
 		[numberFormatter setNumberStyle:NSNumberFormatterPercentStyle];
 	else if ([format isEqualToString:@"scientific"])

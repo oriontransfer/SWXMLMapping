@@ -10,6 +10,9 @@
 #import "SWApplicationSupport/NSString+EscapingAdditions.h"
 #import "SWApplicationSupport/NSString+SplitIntoLines.h"
 
+#import "SWXMLNumberMapping.h"
+#import "SWXMLBooleanMapping.h"
+
 @implementation SWXMLMappingParser
 + defaultMemberMappings {
 	return [NSDictionary dictionaryWithObjectsAndKeys:

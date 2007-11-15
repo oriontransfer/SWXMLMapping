@@ -21,7 +21,7 @@
 
 + (NSDictionary*)substitutions {
 	return [NSDictionary dictionaryWithObjectsAndKeys:
-		@"&gt;", @">", @"&lt;", @"<", nil];
+		@"&gt;", @">", @"&lt;", @"<", @"&amp;", @"&", nil];
 }
 
 + (NSString*) tagNamed: (NSString*)name {

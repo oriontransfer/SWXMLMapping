@@ -2,11 +2,10 @@
 //  SWXMLMappingParser.h
 //  Property Manager
 //
-//  Created by Sammi Williams on 13/11/05.
-//  Copyright 2005 Sammi Williams. All rights reserved.
+//  Created by Samuel Williams on 13/11/05.
+//  Copyright 2005 Samuel Williams. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
 #import "SWXMLMapping.h"
 #import "SWXMLClassMapping.h"
 
@@ -18,7 +17,7 @@
 
 @class SWXMLStringMapping, SWXMLDateMapping, SWXMLCollectionMapping, SWXMLNumberMapping, SWXMLBooleanMapping;
 
-@interface SWXMLMappingParser : NSObject {
+@interface SWXMLMappingParser : NSObject <NSXMLParserDelegate> {
 	/* Root state */
 	NSMutableDictionary *objectMappings;
 	NSDictionary *mappingAttributes;

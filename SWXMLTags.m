@@ -2,16 +2,15 @@
 //  SWXMLTags.m
 //  Property Manager
 //
-//  Created by Sammi Williams on 13/11/05.
-//  Copyright 2005 Sammi Williams. All rights reserved.
+//  Created by Samuel Williams on 13/11/05.
+//  Copyright 2005 Samuel Williams. All rights reserved.
 //
 
 #import "SWXMLTags.h"
-#import "SWApplicationSupport/NSString+EscapingAdditions.h"
-#import "SWApplicationSupport/NSString+SplitIntoLines.h"
 
 @interface SWXMLTags (Private)
 + (NSString*) indent: (NSString*)inner;
++ (NSString*) substitute: (NSDictionary*)replacements inString: (NSString*)string;
 @end
 
 @implementation SWXMLTags
@@ -24,13 +23,29 @@
 		@"&gt;", @">", @"&lt;", @"<", @"&amp;", @"&", nil];
 }
 
++ (NSString*)substitute: (NSDictionary*)replacements inString: (NSString*)string {	
+	NSEnumerator * keyEnumerator = [replacements keyEnumerator];
+	NSMutableString * result = [string mutableCopy];
+	
+	NSString * key = nil;
+	while ((key = [keyEnumerator nextObject])) {
+		NSString * value = [replacements objectForKey:key];
+		[result replaceOccurrencesOfString:key withString:value options:0 range:NSMakeRange(0, [result length])];
+	}
+	
+	return [result autorelease];
+}
+
 + (NSString*) tagNamed: (NSString*)name {
 	return [NSString stringWithFormat:@"<%@ />", name];
 }
 
 + (NSString*) tagNamed: (NSString*)name forCDATA: (NSString*)value {
 	if (value == nil) value = @"";
-	return [NSString stringWithFormat:@"<%@>%@</%@>", name, [value substitute:[self substitutions]], name];
+	
+	NSString * inner = [self substitute:[self substitutions] inString:value];
+	
+	return [NSString stringWithFormat:@"<%@>%@</%@>", name, inner, name];
 }
 
 + (NSString*) tagNamed: (NSString*)name forValue: (NSString*)value {
@@ -39,7 +54,8 @@
 }
 
 + (NSString*) indent: (NSString*)inner {
-	NSArray *lines = [inner componentsSeparatedByLineBreaks];
+	NSCharacterSet * lineEndings = [NSCharacterSet characterSetWithCharactersInString:@"\r\n"];
+	NSArray * lines = [inner componentsSeparatedByCharactersInSet:lineEndings];
 	NSMutableString *res = [[NSMutableString alloc] init];
 	id o, i = [lines objectEnumerator];
 	

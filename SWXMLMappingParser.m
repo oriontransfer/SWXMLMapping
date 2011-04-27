@@ -2,13 +2,11 @@
 //  SWXMLMappingParser.m
 //  Property Manager
 //
-//  Created by Sammi Williams on 13/11/05.
-//  Copyright 2005 Sammi Williams. All rights reserved.
+//  Created by Samuel Williams on 13/11/05.
+//  Copyright 2005 Samuel Williams. All rights reserved.
 //
 
 #import "SWXMLMappingParser.h"
-#import "SWApplicationSupport/NSString+EscapingAdditions.h"
-#import "SWApplicationSupport/NSString+SplitIntoLines.h"
 
 #import "SWXMLNumberMapping.h"
 #import "SWXMLBooleanMapping.h"
@@ -126,12 +124,14 @@
 }
 
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
-    NSLog ([NSString stringWithFormat:@"Parse error at line %i character %i (%@)", [parser lineNumber], [parser columnNumber], parseError]);
+    NSLog(@"Parse error at line %i character %i (%@)", [parser lineNumber], [parser columnNumber], parseError);
 }
 
-- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
-    if ([string stripSurroundingSpaces] != nil) {
-        NSLog ([NSString stringWithFormat:@"Found characters %@", [string quote]]);
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)characters {
+	NSString * trimmed = [characters stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+	
+    if ([trimmed length] != 0) {
+        NSLog(@"Found characters: %@", trimmed);
     }
 }
 
@@ -140,6 +140,6 @@
 }
 
 - (void)parser:(NSXMLParser *)parser foundCDATA:(NSData *)CDATABlock {
-    NSLog ([NSString stringWithFormat:@"Found cdata %@", CDATABlock]);
+    NSLog (@"Found cdata: %@", CDATABlock);
 }
 @end

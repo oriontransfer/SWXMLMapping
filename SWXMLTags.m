@@ -70,7 +70,7 @@
 
 + (NSString*) formatAttributes: (NSDictionary*)attributes {
 	id o, i = [attributes keyEnumerator];
-	NSMutableString *attrString = [NSMutableString new];
+	NSMutableString *attrString = [[NSMutableString new] autorelease];
 	
 	while ((o = [i nextObject]) !=nil) {
 		[attrString appendFormat:@" %@=\"%@\"", o, [attributes valueForKey:o]];

@@ -24,7 +24,9 @@
 }
 
 - initWithURL: (NSURL*)loc {
-	if (self == [super init]) {
+	self = [super init];
+	
+	if (self) {
         XMLParser = [[NSXMLParser alloc] initWithContentsOfURL:loc];
 		[XMLParser setShouldResolveExternalEntities:NO];
 		[XMLParser setShouldReportNamespacePrefixes:NO];
@@ -37,7 +39,9 @@
 }
 
 - initWithData: (NSData*)data {
-	if (self == [super init]) {
+	self = [super init];
+	
+	if (self) {
         XMLParser = [[NSXMLParser alloc] initWithData:data];
 		[XMLParser setShouldResolveExternalEntities:NO];
 		[XMLParser setShouldReportNamespacePrefixes:NO];
@@ -70,12 +74,11 @@
 }
 
 - (void) parserDidStartDocument:(NSXMLParser *)parser {
-    NSLog (@"Parsing...");
+    //NSLog (@"Parsing...");
 }
 
 - (void) parserDidEndDocument:(NSXMLParser *)parser {
-
-    NSLog (@"Finished!");
+    //NSLog (@"Finished!");
 }
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qualifiedName attributes:(NSDictionary *)attr {
@@ -84,7 +87,7 @@
 	if (objectMapping != nil) {
 		Class MemberMapping = [memberMappingClasses objectForKey:elementName];
 		if (MemberMapping != nil) {
-			[self->memberMappings addObject:[(SWXMLMemberMapping*)[MemberMapping alloc] initWithAttributes:attr]];
+			[self->memberMappings addObject:[[(SWXMLMemberMapping*)[MemberMapping alloc] initWithAttributes:attr] autorelease]];
 		} else {
 			NSLog (@"Unknown member type: %@", elementName);
 		}
@@ -124,7 +127,7 @@
 }
 
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
-    NSLog(@"Parse error at line %i character %i (%@)", [parser lineNumber], [parser columnNumber], parseError);
+    NSLog(@"Parse error at line %ld character %ld (%@)", [parser lineNumber], [parser columnNumber], parseError);
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)characters {

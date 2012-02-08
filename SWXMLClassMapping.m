@@ -16,7 +16,7 @@
 	SWXMLMemberMapping *memberMapping;
 	
 	//NSMutableDictionary *attributes = [NSMutableDictionary new];
-	NSMutableArray *children = [NSMutableArray new];
+	NSMutableArray *children = [[NSMutableArray new] autorelease];
 	
 	while ((memberMapping = [i nextObject]) != nil) {
 		[children addObject:[memberMapping serializedObjectMember:object withMapping:mapping]];
@@ -26,7 +26,9 @@
 }
 
 - initWithTag: (NSString*)tagName forClass: (NSString*)className {
-	if (self == [super init]) {
+	self = [super init];
+	
+	if (self) {
 		self->tag = [tagName retain];
 		self->objectClassName = [className retain];
 	}

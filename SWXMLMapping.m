@@ -39,13 +39,13 @@
 
 - (NSString*) serializeEnumerator: (NSEnumerator*)i {
 	id obj;
-	NSMutableString *str = [NSMutableString new];
+	NSMutableString *str = [[NSMutableString new] autorelease];
 	
 	while ((obj = [i nextObject]) != nil) {
 		[str appendFormat:@"%@\n", [self serializeObject:obj]];
 	}
 	
-	return [[str retain] autorelease];
+	return str;
 }
 /*
 - (NSString*) serialize: (id)root withTag: (NSString*)tag {

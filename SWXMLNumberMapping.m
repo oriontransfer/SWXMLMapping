@@ -15,7 +15,7 @@
 	NSNumberFormatter *numberFormatter;
 	NSNumber *num = [object valueForKeyPath:[self keyPath]];
 
-	numberFormatter = [[NSNumberFormatter alloc] init];
+	numberFormatter = [[NSNumberFormatter new] autorelease];
 	
 	NSString *format;
 	format = [self->attributes valueForKey:@"format"];

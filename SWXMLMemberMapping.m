@@ -12,7 +12,9 @@
 @implementation SWXMLMemberMapping
 
 - initWithTag: (NSString*)newTag keyPath: (NSString*)newKeyPath attributes: (NSDictionary*)newAttributes {
-	if (self == [super init]) {
+	self = [super init];
+	
+	if (self) {
 		self->tag = [newTag retain];
 		self->keyPath = [newKeyPath retain];
 		self->attributes = [newAttributes retain];

@@ -12,17 +12,18 @@
 @class SWXMLMapping;
 
 @interface SWXMLMemberMapping : NSObject {
-	NSString *tag;
-	NSString *keyPath;
-	NSDictionary *attributes;
+	NSString *_tag;
+	NSString *_keyPath;
+	NSDictionary *_attributes;
 }
+
+@property(nonatomic,retain) NSString * tag;
+@property(nonatomic,retain) NSString * keyPath;
+@property(nonatomic,retain) NSDictionary * attributes;
 
 - initWithTag: (NSString*)tag keyPath: (NSString*)keyPath attributes: (NSDictionary*)attributes;
 - initWithAttributes: (NSDictionary*)attributes;
 
 - (NSString*) serializedObjectMember: (id) object withMapping: (SWXMLMapping*)mapping;
-
-- (NSString*) keyPath;
-- (NSString*) tag;
 
 @end

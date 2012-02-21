@@ -13,20 +13,18 @@
 
 @interface SWXMLClassMapping : NSObject {
 	//Class objectClass;
-	NSString *objectClassName;
-	NSString *tag;
-	NSArray *members;
+	NSString * _objectClassName;
+	NSString * _tag;
+	NSArray * _members;
 	// List of tags (SWXMLMemberMapping)
 }
+
+@property(nonatomic,retain) NSString * objectClassName;
+@property(nonatomic,retain) NSString * tag;
+@property(nonatomic,retain) NSArray * members;
 
 - initWithTag: (NSString*)tag forClass: (NSString*)objectClassName;
 
 - (NSString*) serializeObject: (id)object withMapping: (SWXMLMapping*)mapping;
-
-- (void) setMembers: (NSArray*)members;
-- (NSArray*) members;
-
-- (NSString*) tag;
-- (NSString*) objectClassName;
 
 @end

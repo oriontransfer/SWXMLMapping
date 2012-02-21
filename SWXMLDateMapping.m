@@ -17,16 +17,16 @@
 	NSDate *date = [object valueForKeyPath:[self keyPath]];
 	
 	NSString *format;
-	format = [self->attributes valueForKey:@"format"];
+	format = [self.attributes valueForKey:@"format"];
 	
 	if (!format)
 		format = @"%d-%m-%Y";
 	
-	NSString *tzName = [self->attributes valueForKey:@"timezone"];
+	NSString *tzName = [self.attributes valueForKey:@"timezone"];
 	if (tzName)
 		timezone = [[[NSTimeZone alloc] initWithName:tzName] autorelease];
 	
-	NSString *lcName = [self->attributes valueForKey:@"locale"];
+	NSString *lcName = [self.attributes valueForKey:@"locale"];
 	if (lcName)
 		locale = [[[NSLocale alloc] initWithLocaleIdentifier:lcName] autorelease];
 	
@@ -34,7 +34,7 @@
 		If not, it will probably be a bug and lead to WWIII or something else */
 	NSString *formattedDate = [date descriptionWithCalendarFormat:format timeZone:timezone locale:(NSDictionary*)locale];
 	
-	return [SWXMLTags tagNamed:self->tag forCDATA:formattedDate];
+	return [SWXMLTags tagNamed:self.tag forCDATA:formattedDate];
 }
 
 @end

@@ -35,19 +35,26 @@
 
 */
 
+@class SWXMLClassMapping;
+
 @interface SWXMLMapping : NSObject {
-	NSDictionary *objectMappings;
+	NSDictionary * objectMappings;
 }
 
-+ (SWXMLMapping*) mappingFromURL: (NSURL*)loc;
++ (SWXMLMapping*) mappingFromURL:(NSURL *)schemaURL;
 
-- (NSString*) serializeObject: (id)object;
-- (NSString*) serializeSet: (NSSet*)set;
-- (NSString*) serializeArray: (NSArray*)arr;
-- (NSString*) serializeDictionary: (NSDictionary*)dict;
+@property(nonatomic,retain) NSDictionary * objectMappings;
 
-- (void) setObjectMappings: (NSDictionary*)objectMappings;
-- (NSDictionary*) objectMappings;
+// Includes <?xml ... ?>
+- (NSString*) serialize:(id)root;
+
+- (NSString*) serializeObject:(id)object;
+- (NSString*) serializeObject:(id)object withClassMapping:(SWXMLClassMapping *)classMapping;
+
+- (NSString*) serializeEnumerator:(NSEnumerator*)enumerator withClassMapping:(SWXMLClassMapping*)classMapping;
+- (NSString*) serializeSet:(NSSet*)set withClassMapping:(SWXMLClassMapping *)classMapping;
+- (NSString*) serializeArray:(NSArray*)array withClassMapping:(SWXMLClassMapping *)classMapping;
+- (NSString*) serializeDictionary:(NSDictionary*)dictionary withClassMapping:(SWXMLClassMapping *)classMapping;
 
 //- (NSString*) tag;
 //- (void) setTag: (NSString*)newTag;

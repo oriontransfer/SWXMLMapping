@@ -11,54 +11,35 @@
 
 @implementation SWXMLClassMapping
 
+@synthesize objectClassName = _objectClassName, tag = _tag, members = _members;
+
 - (NSString*) serializeObject: (id)object withMapping: (SWXMLMapping*)mapping {
-	id i = [members objectEnumerator];
-	SWXMLMemberMapping *memberMapping;
+	NSMutableArray * children = [[NSMutableArray new] autorelease];
 	
-	//NSMutableDictionary *attributes = [NSMutableDictionary new];
-	NSMutableArray *children = [[NSMutableArray new] autorelease];
-	
-	while ((memberMapping = [i nextObject]) != nil) {
+	for (SWXMLMemberMapping * memberMapping in self.members) {
 		[children addObject:[memberMapping serializedObjectMember:object withMapping:mapping]];
 	}
 	
-	return [SWXMLTags tagNamed:self->tag forValue:[children componentsJoinedByString:@"\n"]];
+	return [SWXMLTags tagNamed:self.tag forValue:[children componentsJoinedByString:@"\n"]];
 }
 
-- initWithTag: (NSString*)tagName forClass: (NSString*)className {
+- initWithTag: (NSString*)tag forClass: (NSString*)className {
 	self = [super init];
 	
 	if (self) {
-		self->tag = [tagName retain];
-		self->objectClassName = [className retain];
+		self.tag = tag;
+		self.objectClassName = className;
 	}
 	
 	return self;
 }
 
 - (void) dealloc {
-	[tag release];
-	[objectClassName release];
+	self.tag = nil;
+	self.objectClassName = nil;
+	self.members = nil;
 	
 	[super dealloc];
-}
-
-
-- (void) setMembers: (NSArray*)newMembers {
-	[self->members release];
-	self->members = [newMembers retain];
-}
-
-- (NSArray*) members {
-	return [[self->members retain] autorelease];
-}
-
-- (NSString*) tag {
-	return [[tag retain] autorelease];
-}
-
-- (NSString*) objectClassName {
-	return [[objectClassName retain] autorelease];
 }
 
 @end

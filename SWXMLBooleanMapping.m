@@ -26,7 +26,7 @@
 	} else
 		result = falseString;
 	
-	return [SWXMLTags tagNamed:self->tag forCDATA:result];
+	return [SWXMLTags tagNamed:self.tag forCDATA:result];
 }
 
 @end

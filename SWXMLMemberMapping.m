@@ -11,41 +11,34 @@
 
 @implementation SWXMLMemberMapping
 
-- initWithTag: (NSString*)newTag keyPath: (NSString*)newKeyPath attributes: (NSDictionary*)newAttributes {
+@synthesize tag = _tag, keyPath = _keyPath, attributes = _attributes;
+
+- (id)initWithTag:(NSString *)tag keyPath:(NSString *)keyPath attributes:(NSDictionary *)attributes {
 	self = [super init];
 	
 	if (self) {
-		self->tag = [newTag retain];
-		self->keyPath = [newKeyPath retain];
-		self->attributes = [newAttributes retain];
+		self.tag = tag;
+		self.keyPath = keyPath;
+		self.attributes = attributes;
 	}
 	
 	return self;
 }
 
 - (void) dealloc {
-	[tag release];
-	[keyPath release];
-	[attributes release];
+	self.tag = nil;
+	self.keyPath = nil;
+	self.attributes = nil;
 	
 	[super dealloc];
 }
 
-
-- initWithAttributes: (NSDictionary*)attrs {
-	return [self initWithTag:[attrs valueForKey:@"tag"] keyPath:[attrs valueForKey:@"keyPath"] attributes:attrs];
+- initWithAttributes: (NSDictionary*)attributes {
+	return [self initWithTag:[attributes valueForKey:@"tag"] keyPath:[attributes valueForKey:@"keyPath"] attributes:attributes];
 }
 
-- (NSString*) serializedObjectMember: (id) object withMapping: (SWXMLMapping*)mapping {
-	return [mapping serializeObject:[object valueForKeyPath:self->keyPath]];
-}
-
-- (NSString*) keyPath {
-	return [[self->keyPath retain] autorelease];
-}
-
-- (NSString*) tag {
-	return [[self->tag retain] autorelease];
+- (NSString*) serializedObjectMember:(id) object withMapping:(SWXMLMapping*)mapping {
+	return [mapping serializeObject:[object valueForKeyPath:self.keyPath]];
 }
 
 @end

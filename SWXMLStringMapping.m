@@ -12,7 +12,7 @@
 @implementation SWXMLStringMapping
 
 - (NSString*) serializedObjectMember: (id) object withMapping: (SWXMLMapping*)mapping {
-	return [SWXMLTags tagNamed:self->tag forCDATA:[object valueForKeyPath:self->keyPath]];
+	return [SWXMLTags tagNamed:self.tag forCDATA:[object valueForKeyPath:self.keyPath]];
 }
 
 @end

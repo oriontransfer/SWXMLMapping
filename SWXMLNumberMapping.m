@@ -18,7 +18,7 @@
 	numberFormatter = [[NSNumberFormatter new] autorelease];
 	
 	NSString *format;
-	format = [self->attributes valueForKey:@"format"];
+	format = [self.attributes valueForKey:@"format"];
 	if ([format isEqualToString:@"currency"]) {
 		[numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
 		//[numberFormatter setFormat:@"$#,###.00;0.00;($#,##0.00)"];
@@ -38,7 +38,7 @@
 
 	NSString *formattedNumber = [numberFormatter stringFromNumber:num];
 	
-	return [SWXMLTags tagNamed:self->tag forCDATA:formattedNumber];
+	return [SWXMLTags tagNamed:self.tag forCDATA:formattedNumber];
 }
 
 @end

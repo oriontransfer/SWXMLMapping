@@ -7,46 +7,35 @@
 //
 
 #import "SWXMLMapping.h"
-//Private
 #import "SWXMLMappingParser.h"
-
-@interface SWXMLMapping (Private)
-- (NSString*) serializeEnumerator: (NSEnumerator*)i;
-@end
+#import "SWXMLClassMapping.h"
 
 @implementation SWXMLMapping
-+ (SWXMLMapping*) mappingFromURL: (NSURL*)loc {
-	SWXMLMappingParser *parser = [[[SWXMLMappingParser alloc] initWithURL:loc] autorelease];
-	SWXMLMapping *mapping = [[[SWXMLMapping alloc] init] autorelease];
-	NSDictionary *objectMappings;
+
++ (SWXMLMapping*) mappingFromURL:(NSURL*)schemaURL {
+	SWXMLMappingParser * parser = [[[SWXMLMappingParser alloc] initWithURL:schemaURL] autorelease];
+	SWXMLMapping * mapping = [[[SWXMLMapping alloc] init] autorelease];
 	
-	objectMappings = [parser parse];
-	
-	[mapping setObjectMappings:objectMappings];
+	// ??? root container tag?
 	//[mapping setTag:[[parser mappingAttributes] objectForKey:@"tag"]];
+	
+	mapping.objectMappings = [parser parse];
 	
 	return mapping;
 }
 
-- (void) setObjectMappings: (NSDictionary*)newObjectMappings {
-	[self->objectMappings autorelease];
-	self->objectMappings = [newObjectMappings retain];
-}
+@synthesize objectMappings;
 
-- (NSDictionary*) objectMappings {
-	return [[self->objectMappings retain] autorelease];
-}
-
-- (NSString*) serializeEnumerator: (NSEnumerator*)i {
-	id obj;
-	NSMutableString *str = [[NSMutableString new] autorelease];
+- (NSString*) serializeEnumerator:(NSEnumerator*)enumerator withClassMapping:(SWXMLClassMapping *)classMapping {
+	NSMutableArray * lines = [NSMutableArray array];
 	
-	while ((obj = [i nextObject]) != nil) {
-		[str appendFormat:@"%@\n", [self serializeObject:obj]];
+	for (id object in enumerator) {
+		[lines addObject:[self serializeObject:object withClassMapping:classMapping]];
 	}
 	
-	return str;
+	return [lines componentsJoinedByString:@"\n"];
 }
+
 /*
 - (NSString*) serialize: (id)root withTag: (NSString*)tag {
 	NSString *serializedString = [self serializeObject:root];
@@ -54,6 +43,7 @@
 	return [SWXMLTags tagNamed:tag forValue:serializedString];
 }
 */
+
 - (NSString*) serialize: (id)root {
 	NSString *serializedXML = [self serializeObject:root];
 	NSString *XMLTag = [SWXMLTags tagForXML];
@@ -62,48 +52,53 @@
 	//[self serialize:root withTag:[self tag]];
 }
 
+- (NSString*) serializeObject:(id)object {
+	return [self serializeObject:object withClassMapping:nil];
+}
+
 /* Serializes an arbitraty object to XML */
-- (NSString*) serializeObject: (id)object {
+- (NSString*) serializeObject:(id)object withClassMapping:(SWXMLClassMapping *)classMapping {
 	Class objectClass = [object class];
+	
 	/* Determine the type of object */
 	if ([object isKindOfClass:[NSSet class]])
-		return [self serializeSet:object];
+		return [self serializeSet:object withClassMapping:classMapping];
 	else if ([object isKindOfClass:[NSArray class]])
-		return [self serializeArray:object];
+		return [self serializeArray:object withClassMapping:classMapping];
 	else if ([object isKindOfClass:[NSDictionary class]])
-		return [self serializeDictionary:object];
+		return [self serializeDictionary:object withClassMapping:classMapping];
 	else {
-		/* We need to find the SWXMLClassMapping to serialize this object
-		   The data structure stores Class => ObjectMapping*, so we need to
-		   traverse up the class heirarchy to get a more generic mapping object
-		   if a specific one does not exist */
-		SWXMLClassMapping *objectMapping = nil;
-		while (objectClass && objectClass != [NSObject class]) {
-			objectMapping = [self->objectMappings objectForKey:[objectClass className]];
-			if (objectMapping != nil)
-				break;
-			else
-				objectClass = [objectClass superclass];
+		// We need to find the SWXMLClassMapping to serialize this object. The data structure stores Class => ObjectMapping*, so we need to traverse up the class heirarchy to get a more generic mapping object if a specific one does not exist.
+		
+		// A class mapping may have been provided already, otherwise search for an appropriate one:
+		if (classMapping == nil) {
+			while (objectClass && objectClass != [NSObject class]) {
+				classMapping = [self->objectMappings objectForKey:[objectClass className]];
+				if (classMapping != nil)
+					break;
+				else
+					objectClass = [objectClass superclass];
+			}
 		}
 		
-		if (objectMapping == nil) {
+		if (classMapping == nil) {
 			NSLog (@"No object mapping for %@", [object className]);
 			return nil;
 		}
 		
-		return [objectMapping serializeObject: object withMapping:self];
+		return [classMapping serializeObject:object withMapping:self];
 	}
 }
 
-- (NSString*) serializeSet: (NSSet*)set {
-	return [self serializeEnumerator:[set objectEnumerator]];
+- (NSString *)serializeSet:(NSSet *)set withClassMapping:(SWXMLClassMapping *)classMapping {
+	return [self serializeEnumerator:set.objectEnumerator withClassMapping:classMapping];
 }
 
-- (NSString*) serializeArray: (NSArray*)arr {
-	return [self serializeObject:[arr objectEnumerator]];
+- (NSString *)serializeArray:(NSArray *)array withClassMapping:(SWXMLClassMapping *)classMapping {
+	return [self serializeEnumerator:array.objectEnumerator withClassMapping:classMapping];
 }
 
-- (NSString*) serializeDictionary: (NSDictionary*)dict {
+- (NSString*) serializeDictionary: (NSDictionary*)dict withClassMapping:(SWXMLClassMapping *)classMapping {
 	return @"";
 }
 /*

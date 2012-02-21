@@ -11,13 +11,43 @@
 
 @implementation SWXMLCollectionMapping
 
+@synthesize objectClassName = _objectClassName, filterClassName = _filterClassName;
+
+- initWithTag: (NSString*)tag keyPath: (NSString*)keyPath attributes: (NSDictionary*)attributes {
+	self = [super initWithTag:tag keyPath:keyPath attributes:attributes];
+	
+	if (self) {
+		self.filterClassName = [attributes valueForKey:@"filter"];
+		self.objectClassName = [attributes valueForKey:@"class"];
+	}
+	
+	return self;
+}
+
 - serializedObjectMember: (id)object withMapping: (SWXMLMapping*)mapping {
-	NSString* collection = [mapping serializeObject:[object valueForKeyPath:[self keyPath]]];
+	id collection = [object valueForKeyPath:[self keyPath]];
+	
+	// This might be considered too simple as it won't catch derived classes, but it is fine for now...
+	if (self.filterClassName) {
+		NSMutableArray * items = [NSMutableArray array];
+		
+		for (id item in collection) {
+			if ([[item className] isEqualToString:self.filterClassName])
+				[items addObject:item];
+		}
+		
+		collection = items;
+	}
+	
+	SWXMLClassMapping * classMapping = nil;
+	
+	if (self.objectClassName) {
+		classMapping = [mapping.objectMappings objectForKey:self.objectClassName];
+	}
+	
+	NSString * buffer = [mapping serializeObject:collection withClassMapping:classMapping];
 
-	//NSLog (@"SWXMLCollectionMapping: %@", mapping);
-	//NSLog (@"SWXMLCollectionMapping: %@", collection);
-
-	return [SWXMLTags tagNamed:[self tag] forValue:collection];
+	return [SWXMLTags tagNamed:self.tag forValue:buffer];
 }
 
 @end

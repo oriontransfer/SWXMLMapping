@@ -54,18 +54,19 @@
 }
 
 + (NSString*) indent: (NSString*)inner {
+	// Avoid adding newlines to empty space.
+	if (inner.length == 0)
+		return @"";
+	
 	NSCharacterSet * lineEndings = [NSCharacterSet characterSetWithCharactersInString:@"\r\n"];
 	NSArray * lines = [inner componentsSeparatedByCharactersInSet:lineEndings];
-	NSMutableString *res = [[NSMutableString alloc] init];
-	id o, i = [lines objectEnumerator];
+	NSMutableString * buffer = [NSMutableString string];
 	
-	while ((o = [i nextObject]) != nil) {
-		if (o == nil) continue;
-		
-		[res appendFormat:@"\t%@\n", o];
+	for (NSString * line in lines) {
+		[buffer appendFormat:@"\t%@\n", line];
 	}
 	
-	return [res autorelease];
+	return buffer;
 }
 
 + (NSString*) formatAttributes: (NSDictionary*)attributes {

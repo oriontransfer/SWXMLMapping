@@ -10,17 +10,11 @@
 
 #include <libxslt/xslt.h>
 #include <libxslt/transform.h>
-
-// extern int xmlLoadExtDtdDefaultValue;
+#include <libxslt/xsltutils.h>
 
 @implementation SWXSLTransform
 
 @synthesize baseURL = _baseURL;
-
-+ (void)initialize {
-	// xmlSubstituteEntitiesDefault(1);
-	// xmlLoadExtDtdDefaultValue = 1;
-}
 
 - (void) releaseStylesheet {
 	if (_stylesheet) {

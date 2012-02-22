@@ -12,19 +12,24 @@
 @class SWXMLMapping, SWXMLMemberMapping;
 
 @interface SWXMLClassMapping : NSObject {
-	//Class objectClass;
 	NSString * _objectClassName;
 	NSString * _tag;
-	NSArray * _members;
+	
 	// List of tags (SWXMLMemberMapping)
+	NSArray * _members;
+	
+	NSDictionary * _attributes;
+
 }
 
 @property(nonatomic,retain) NSString * objectClassName;
 @property(nonatomic,retain) NSString * tag;
 @property(nonatomic,retain) NSArray * members;
+@property(nonatomic,retain) NSDictionary * attributes;
 
-- initWithTag: (NSString*)tag forClass: (NSString*)objectClassName;
+- initWithTag:(NSString*)tag forClass:(NSString*)objectClassName attributes:(NSDictionary *)attributes;
 
-- (NSString*) serializeObject: (id)object withMapping: (SWXMLMapping*)mapping;
+- (NSArray *)membersForObject:(id)object withMapping:(SWXMLMapping *)mapping;
+- (NSString *)serializeObject:(id)object withMapping:(SWXMLMapping *)mapping;
 
 @end

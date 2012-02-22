@@ -11,24 +11,47 @@
 
 @implementation SWXMLClassMapping
 
-@synthesize objectClassName = _objectClassName, tag = _tag, members = _members;
+@synthesize objectClassName = _objectClassName, tag = _tag, members = _members, attributes = _attributes;
 
-- (NSString*) serializeObject: (id)object withMapping: (SWXMLMapping*)mapping {
+- (NSArray *)membersForObject:(id)object withMapping:(SWXMLMapping *)mapping {
 	NSMutableArray * children = [[NSMutableArray new] autorelease];
 	
 	for (SWXMLMemberMapping * memberMapping in self.members) {
-		[children addObject:[memberMapping serializedObjectMember:object withMapping:mapping]];
+		NSString * child = [memberMapping serializedObjectMember:object withMapping:mapping];
+		
+		if (child && child.length > 0)
+			[children addObject:child];
 	}
 	
-	return [SWXMLTags tagNamed:self.tag forValue:[children componentsJoinedByString:@"\n"]];
+	return children;
 }
 
-- initWithTag: (NSString*)tag forClass: (NSString*)className {
+- (NSString *)serializeObject:(id)object withMapping:(SWXMLMapping*)mapping {
+	NSArray * children = [self membersForObject:object withMapping:mapping];
+	NSDictionary * attributes = nil;
+	
+	if ([self.attributes objectForKey:@"id"]) {
+		id objectIdentificationKeyPath = [self.attributes objectForKey:@"id"];
+		
+		// Wee shortcut
+		if ([objectIdentificationKeyPath isEqualTo:@"managed-object"]) {
+			objectIdentificationKeyPath = @"objectID.URIRepresentation";
+		}
+		
+		id objectIdentification = [object valueForKeyPath:objectIdentificationKeyPath];
+		attributes = [NSDictionary dictionaryWithObject:objectIdentification forKey:@"id"];
+	}
+	
+	return [SWXMLTags tagNamed:self.tag forValue:[children componentsJoinedByString:@"\n"] withAttributes:attributes];
+}
+
+- initWithTag:(NSString*)tag forClass:(NSString*)className attributes:(NSDictionary *)attributes {
 	self = [super init];
 	
 	if (self) {
 		self.tag = tag;
 		self.objectClassName = className;
+		self.attributes = attributes;
 	}
 	
 	return self;

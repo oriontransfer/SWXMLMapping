@@ -24,6 +24,6 @@
 - initWithTag: (NSString*)tag keyPath: (NSString*)keyPath attributes: (NSDictionary*)attributes;
 - initWithAttributes: (NSDictionary*)attributes;
 
-- (NSString*) serializedObjectMember: (id) object withMapping: (SWXMLMapping*)mapping;
+- (NSString*) serializedObjectMember:(id)object withMapping:(SWXMLMapping*)mapping;
 
 @end

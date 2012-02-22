@@ -39,6 +39,9 @@
 		collection = items;
 	}
 	
+	if ([collection count] == 0)
+		return nil;
+	
 	SWXMLClassMapping * classMapping = nil;
 	
 	if (self.objectClassName) {
@@ -46,7 +49,6 @@
 	}
 	
 	NSString * buffer = [mapping serializeObject:collection withClassMapping:classMapping];
-
 	return [SWXMLTags tagNamed:self.tag forValue:buffer];
 }
 

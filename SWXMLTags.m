@@ -70,6 +70,8 @@
 }
 
 + (NSString*) formatAttributes: (NSDictionary*)attributes {
+	if (attributes == nil) return @"";
+	
 	id o, i = [attributes keyEnumerator];
 	NSMutableString *attrString = [[NSMutableString new] autorelease];
 	

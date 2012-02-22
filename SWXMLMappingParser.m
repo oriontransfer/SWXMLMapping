@@ -10,6 +10,7 @@
 
 #import "SWXMLNumberMapping.h"
 #import "SWXMLBooleanMapping.h"
+#import "SWXMLIncludeMapping.h"
 
 @implementation SWXMLMappingParser
 + defaultMemberMappings {
@@ -20,6 +21,7 @@
 		[SWXMLMemberMapping class], @"object",
 		[SWXMLNumberMapping class], @"number",
 		[SWXMLBooleanMapping class], @"boolean",
+		[SWXMLIncludeMapping class], @"include",
 		nil];
 }
 
@@ -101,7 +103,7 @@
 		self->mappingAttributes = [attr retain];
     } else if ([elementName isEqualToString:@"class"]) {
 		/* Set up a new object mapping */
-		self->objectMapping = [[SWXMLClassMapping alloc] initWithTag:[attr valueForKey:@"tag"] forClass:[attr valueForKey:@"name"]];
+		self->objectMapping = [[SWXMLClassMapping alloc] initWithTag:[attr valueForKey:@"tag"] forClass:[attr valueForKey:@"name"] attributes:attr];
 		self->memberMappings = [[NSMutableArray new] retain];
 	} else {
 		NSLog (@"Unknown tag: %@", elementName);

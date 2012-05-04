@@ -47,6 +47,7 @@
 
 // Includes <?xml ... ?>
 - (NSString*) serialize:(id)root;
+- (NSString*) serialize:(id)root withTag:(NSString*)tag;
 
 - (NSString*) serializeObject:(id)object;
 - (NSString*) serializeObject:(id)object withClassMapping:(SWXMLClassMapping *)classMapping;

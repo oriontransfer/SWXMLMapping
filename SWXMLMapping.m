@@ -36,13 +36,13 @@
 	return [lines componentsJoinedByString:@"\n"];
 }
 
-/*
 - (NSString*) serialize: (id)root withTag: (NSString*)tag {
-	NSString *serializedString = [self serializeObject:root];
+	NSString * serializedString = [self serializeObject:root];
 	
-	return [SWXMLTags tagNamed:tag forValue:serializedString];
+	NSString * header = [SWXMLTags tagForXML];
+	
+	return [header stringByAppendingString:[SWXMLTags tagNamed:tag forValue:serializedString]];
 }
-*/
 
 - (NSString*) serialize: (id)root {
 	NSString *serializedXML = [self serializeObject:root];

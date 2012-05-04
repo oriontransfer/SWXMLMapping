@@ -73,7 +73,7 @@
 	
 	xsltSaveResultTo(outputBuffer, processedDocument, (xsltStylesheetPtr)_stylesheet);
 	
-	NSData * result = [[NSData alloc] initWithBytes:outputBuffer->buffer->content length:outputBuffer->buffer->use];
+	NSData * result = [[[NSData alloc] initWithBytes:outputBuffer->buffer->content length:outputBuffer->buffer->use] autorelease];
 	
 	xmlOutputBufferClose(outputBuffer);
 	xmlFreeDoc(sourceDocument);

@@ -18,20 +18,12 @@
 	return @"<?xml version=\"1.0\"?>\n";
 }
 
-+ (NSDictionary*)substitutions {
-	return [NSDictionary dictionaryWithObjectsAndKeys:
-		@"&gt;", @">", @"&lt;", @"<", @"&amp;", @"&", nil];
-}
-
-+ (NSString*)substitute: (NSDictionary*)replacements inString: (NSString*)string {	
-	NSEnumerator * keyEnumerator = [replacements keyEnumerator];
++ (NSString*)encodeBasicXMLEntities:(NSString*)string {
 	NSMutableString * result = [string mutableCopy];
 	
-	NSString * key = nil;
-	while ((key = [keyEnumerator nextObject])) {
-		NSString * value = [replacements objectForKey:key];
-		[result replaceOccurrencesOfString:key withString:value options:0 range:NSMakeRange(0, [result length])];
-	}
+	[result replaceOccurrencesOfString:@"&"	withString:@"&amp;" options:0 range:NSMakeRange(0, [result length])];
+	[result replaceOccurrencesOfString:@"<"	withString:@"&lt;" options:0 range:NSMakeRange(0, [result length])];
+	[result replaceOccurrencesOfString:@">"	withString:@"&gt;" options:0 range:NSMakeRange(0, [result length])];
 	
 	return [result autorelease];
 }
@@ -43,7 +35,7 @@
 + (NSString*) tagNamed: (NSString*)name forCDATA: (NSString*)value {
 	if (value == nil) value = @"";
 	
-	NSString * inner = [self substitute:[self substitutions] inString:value];
+	NSString * inner = [self encodeBasicXMLEntities:value];
 	
 	return [NSString stringWithFormat:@"<%@>%@</%@>", name, inner, name];
 }

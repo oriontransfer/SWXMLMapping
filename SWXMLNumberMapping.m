@@ -11,9 +11,9 @@
 
 @implementation SWXMLNumberMapping
 
-- serializedObjectMember: (id)object withMapping: (SWXMLMapping*)mapping {
-	NSNumberFormatter *numberFormatter;
-	NSNumber *num = [object valueForKeyPath:[self keyPath]];
+- serializedObjectMember:(id)object withMapping:(SWXMLMapping*)mapping {
+	NSNumberFormatter * numberFormatter = nil;
+	NSNumber * number = [object valueForKeyPath:[self keyPath]];
 
 	numberFormatter = [[NSNumberFormatter new] autorelease];
 	
@@ -22,23 +22,23 @@
 	if ([format isEqualToString:@"currency"]) {
 		[numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
 		//[numberFormatter setFormat:@"$#,###.00;0.00;($#,##0.00)"];
-	} else if ([format isEqualToString:@"decimal"])
+	} else if ([format isEqualToString:@"decimal"]) {
 		//[numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
 		[numberFormatter setFormat:@"###0.00;0;-###0.00"];
-	else if ([format isEqualToString:@"percent"])
+	} else if ([format isEqualToString:@"percent"]) {
 		[numberFormatter setNumberStyle:NSNumberFormatterPercentStyle];
-	else if ([format isEqualToString:@"scientific"])
+	} else if ([format isEqualToString:@"scientific"]) {
 		[numberFormatter setNumberStyle:NSNumberFormatterScientificStyle];
-	else if ([format isEqualToString:@"integer"])
+	} else if ([format isEqualToString:@"integer"]) {
 		[numberFormatter setFormat:@"##"];
-	else if (format != nil)
+	} else if (format != nil) {
 		[numberFormatter setFormat:format];
+	}
 	
-	//- (NSString *)descriptionWithCalendarFormat:(NSString *)formatString timeZone:(NSTimeZone *)aTimeZone locale:(NSDictionary *)localeDictionary	
-
-	NSString *formattedNumber = [numberFormatter stringFromNumber:num];
+	NSString * formattedNumber = [numberFormatter stringFromNumber:number];
+	NSDictionary * attributes = [NSDictionary dictionaryWithObject:[number stringValue] forKey:@"value"];
 	
-	return [SWXMLTags tagNamed:self.tag forCDATA:formattedNumber];
+	return [SWXMLTags tagNamed:self.tag forValue:formattedNumber withAttributes:attributes];
 }
 
 @end

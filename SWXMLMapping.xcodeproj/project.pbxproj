@@ -30,6 +30,7 @@
 		7E36B7CA14F3F482004FCDCE /* SWXMLIncludeMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E36B7C814F3F481004FCDCE /* SWXMLIncludeMapping.h */; };
 		7E36B7CB14F3F482004FCDCE /* SWXMLIncludeMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E36B7C914F3F481004FCDCE /* SWXMLIncludeMapping.m */; };
 		7E712BA11366CFC600CE48AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E712BA01366CFC600CE48AB /* Foundation.framework */; };
+		7EDB061214F6A052009FC017 /* libexslt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDB061114F6A052009FC017 /* libexslt.dylib */; };
 		7EE8801714F53D74005C05F3 /* SWXSLTransform.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EE8801514F53D74005C05F3 /* SWXSLTransform.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EE8801814F53D74005C05F3 /* SWXSLTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE8801614F53D74005C05F3 /* SWXSLTransform.m */; };
 		7EE8801A14F54030005C05F3 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EE8801914F54030005C05F3 /* libxml2.dylib */; };
@@ -63,6 +64,7 @@
 		7E36B7C814F3F481004FCDCE /* SWXMLIncludeMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWXMLIncludeMapping.h; sourceTree = "<group>"; };
 		7E36B7C914F3F481004FCDCE /* SWXMLIncludeMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWXMLIncludeMapping.m; sourceTree = "<group>"; };
 		7E712BA01366CFC600CE48AB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		7EDB061114F6A052009FC017 /* libexslt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libexslt.dylib; path = /usr/lib/libexslt.dylib; sourceTree = "<absolute>"; };
 		7EE8801514F53D74005C05F3 /* SWXSLTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWXSLTransform.h; sourceTree = "<group>"; };
 		7EE8801614F53D74005C05F3 /* SWXSLTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWXSLTransform.m; sourceTree = "<group>"; };
 		7EE8801914F54030005C05F3 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = /usr/lib/libxml2.dylib; sourceTree = "<absolute>"; };
@@ -76,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EDB061214F6A052009FC017 /* libexslt.dylib in Frameworks */,
 				7EE8801C14F54038005C05F3 /* libxslt.dylib in Frameworks */,
 				7EE8801A14F54030005C05F3 /* libxml2.dylib in Frameworks */,
 				7E712BA11366CFC600CE48AB /* Foundation.framework in Frameworks */,
@@ -108,8 +111,9 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7EE8801B14F54038005C05F3 /* libxslt.dylib */,
 				7EE8801914F54030005C05F3 /* libxml2.dylib */,
+				7EE8801B14F54038005C05F3 /* libxslt.dylib */,
+				7EDB061114F6A052009FC017 /* libexslt.dylib */,
 				7E712BA01366CFC600CE48AB /* Foundation.framework */,
 			);
 			name = Frameworks;
@@ -302,6 +306,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@rpath";
 				PRODUCT_NAME = SWXMLMapping;
+				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -320,6 +325,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@rpath";
 				PRODUCT_NAME = SWXMLMapping;
+				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;

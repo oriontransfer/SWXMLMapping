@@ -11,14 +11,30 @@
 #include <libxslt/xslt.h>
 #include <libxslt/transform.h>
 #include <libxslt/xsltutils.h>
+#include <libexslt/exslt.h>
 
 @implementation SWXSLTransform
+
++ (void)initialize {
+	// Ensure that entities are substituted correctly:
+	xmlSubstituteEntitiesDefault(1);
+	
+	// Ensure that external entity subsets are loaded:
+	xmlLoadExtDtdDefaultValue = 1;
+	
+	// Register all supported external modules:
+	exsltRegisterAll();
+	
+	// Register xslt test modules (???)
+	//xsltRegisterTestModule();
+}
 
 @synthesize baseURL = _baseURL;
 
 - (void) releaseStylesheet {
 	if (_stylesheet) {
 		xsltFreeStylesheet((xsltStylesheetPtr)_stylesheet);
+		_stylesheet = NULL;
 	}	
 }
 
@@ -30,6 +46,10 @@
 		
 		const char * localPath = [stylesheetURL.path UTF8String];
 		_stylesheet = xsltParseStylesheetFile((const xmlChar *)localPath);
+		
+		if (_stylesheet == NULL) {
+			NSLog(@"Could not load stylesheet: %@", stylesheetURL);
+		}
 	}
 }
 
@@ -53,6 +73,8 @@
 }
 
 - (NSData *) processDocument:(NSString *)xmlBuffer arguments:(NSDictionary *)arguments {
+	NSAssert(_stylesheet != NULL, @"Stylesheet is NULL");
+	
 	const char ** parameters = (const char **)malloc(2 * sizeof(const char *) * (arguments.count + 1));
 	
 	NSUInteger parameterOffset = 0;

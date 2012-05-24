@@ -11,7 +11,7 @@
 
 @implementation SWXMLCollectionMapping
 
-@synthesize objectClassName = _objectClassName, filterClassName = _filterClassName;
+@synthesize objectClassName = _objectClassName, filterClassName = _filterClassName, sortDescriptors	= _sortDescriptors;
 
 - initWithTag: (NSString*)tag keyPath: (NSString*)keyPath attributes: (NSDictionary*)attributes {
 	self = [super initWithTag:tag keyPath:keyPath attributes:attributes];
@@ -19,6 +19,26 @@
 	if (self) {
 		self.filterClassName = [attributes valueForKey:@"filter"];
 		self.objectClassName = [attributes valueForKey:@"class"];
+		
+		if ([attributes valueForKey:@"sort"]) {
+			NSArray * arguments = [[attributes valueForKey:@"sort"] componentsSeparatedByString:@","];
+			NSMutableArray * sortDescriptors = [NSMutableArray array];
+			
+			for (NSString * argument in arguments) {
+				NSArray * components = [argument componentsSeparatedByString:@":"];
+				
+				BOOL ascending = YES;
+				if (components.count == 2) {
+					if ([[components objectAtIndex:1] isEqualToString:@"descending"]) {
+						ascending = NO;
+					}
+				}
+				
+				[sortDescriptors addObject:[NSSortDescriptor sortDescriptorWithKey:[components objectAtIndex:0] ascending:ascending]];
+			}
+			
+			self.sortDescriptors = sortDescriptors;
+		}
 	}
 	
 	return self;
@@ -41,6 +61,10 @@
 	
 	if ([collection count] == 0)
 		return nil;
+	
+	if (self.sortDescriptors) {
+		collection = [collection sortedArrayUsingDescriptors:self.sortDescriptors];
+	}
 	
 	SWXMLClassMapping * classMapping = nil;
 	

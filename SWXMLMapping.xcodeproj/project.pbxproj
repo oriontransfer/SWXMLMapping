@@ -30,6 +30,7 @@
 		7E36B7CA14F3F482004FCDCE /* SWXMLIncludeMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E36B7C814F3F481004FCDCE /* SWXMLIncludeMapping.h */; };
 		7E36B7CB14F3F482004FCDCE /* SWXMLIncludeMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E36B7C914F3F481004FCDCE /* SWXMLIncludeMapping.m */; };
 		7E712BA11366CFC600CE48AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E712BA01366CFC600CE48AB /* Foundation.framework */; };
+		7ED328C315E24A940015EC20 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED328C215E24A940015EC20 /* CoreFoundation.framework */; };
 		7EDB061214F6A052009FC017 /* libexslt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDB061114F6A052009FC017 /* libexslt.dylib */; };
 		7EE8801714F53D74005C05F3 /* SWXSLTransform.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EE8801514F53D74005C05F3 /* SWXSLTransform.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EE8801814F53D74005C05F3 /* SWXSLTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE8801614F53D74005C05F3 /* SWXSLTransform.m */; };
@@ -64,6 +65,7 @@
 		7E36B7C814F3F481004FCDCE /* SWXMLIncludeMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWXMLIncludeMapping.h; sourceTree = "<group>"; };
 		7E36B7C914F3F481004FCDCE /* SWXMLIncludeMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWXMLIncludeMapping.m; sourceTree = "<group>"; };
 		7E712BA01366CFC600CE48AB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		7ED328C215E24A940015EC20 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
 		7EDB061114F6A052009FC017 /* libexslt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libexslt.dylib; path = /usr/lib/libexslt.dylib; sourceTree = "<absolute>"; };
 		7EE8801514F53D74005C05F3 /* SWXSLTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWXSLTransform.h; sourceTree = "<group>"; };
 		7EE8801614F53D74005C05F3 /* SWXSLTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWXSLTransform.m; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				7EE8801C14F54038005C05F3 /* libxslt.dylib in Frameworks */,
 				7EE8801A14F54030005C05F3 /* libxml2.dylib in Frameworks */,
 				7E712BA11366CFC600CE48AB /* Foundation.framework in Frameworks */,
+				7ED328C315E24A940015EC20 /* CoreFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +118,7 @@
 				7EE8801B14F54038005C05F3 /* libxslt.dylib */,
 				7EDB061114F6A052009FC017 /* libexslt.dylib */,
 				7E712BA01366CFC600CE48AB /* Foundation.framework */,
+				7ED328C215E24A940015EC20 /* CoreFoundation.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -298,10 +302,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 2;
 				FRAMEWORK_VERSION = A;
-				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SWXMLMapping_Prefix.pch;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2/;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@rpath";
@@ -317,10 +319,8 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 2;
 				FRAMEWORK_VERSION = A;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = SWXMLMapping_Prefix.pch;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = /usr/include/libxml2/;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@rpath";
@@ -334,6 +334,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -342,7 +345,11 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_IDENTITY = "3rd Party Mac Developer Application";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				PROVISIONING_PROFILE = "";
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};

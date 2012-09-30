@@ -37,13 +37,15 @@
 
 @class SWXMLClassMapping;
 
-@interface SWXMLMapping : NSObject {
-	NSDictionary * objectMappings;
-}
-
-+ (SWXMLMapping*) mappingFromURL:(NSURL *)schemaURL;
+@interface SWXMLMapping : NSObject
 
 @property(nonatomic,retain) NSDictionary * objectMappings;
+@property(nonatomic,retain) NSDictionary * metadata;
+
++ (SWXMLMapping *) mappingFromURL:(NSURL *)schemaURL;
+
+- initWithMapping:(SWXMLMapping *)mapping andMetadata:(NSDictionary *)metadata;
+- (SWXMLMapping *) mappingWithMetadata: (NSDictionary *)metadata;
 
 // Includes <?xml ... ?>
 - (NSString*) serialize:(id)root;

@@ -94,8 +94,11 @@
 	xmlOutputBufferPtr outputBuffer = xmlAllocOutputBuffer(NULL);
 	
 	xsltSaveResultTo(outputBuffer, processedDocument, (xsltStylesheetPtr)_stylesheet);
-	
-	NSData * result = [[[NSData alloc] initWithBytes:outputBuffer->buffer->content length:outputBuffer->buffer->use] autorelease];
+
+	const xmlChar * contents = xmlOutputBufferGetContent(outputBuffer);
+	size_t size = xmlOutputBufferGetSize(outputBuffer);
+
+	NSData * result = [[[NSData alloc] initWithBytes:contents length:size] autorelease];
 	
 	xmlOutputBufferClose(outputBuffer);
 	xmlFreeDoc(sourceDocument);

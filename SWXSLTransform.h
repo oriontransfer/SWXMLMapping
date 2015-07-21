@@ -14,10 +14,10 @@
 }
 
 /// The base URL that was used to load the stylesheet:
-@property(nonatomic,retain) NSURL * baseURL;
+@property(nonatomic,strong) NSURL * baseURL;
 
 /// Initialize the XSL stylesheet from the given URL:
-- initWithURL:(NSURL *)url;
+- (instancetype) initWithURL:(NSURL *)url NS_DESIGNATED_INITIALIZER;
 
 /// Use the XSL stylesheet to process a string containing XML with a set of arguments.
 /// Arguments are typically evaluated by the XSLT processor, so, for example, strings must be passed with an additional set of quotes.

@@ -14,15 +14,13 @@
 
 @implementation SWXMLMappingParser
 + defaultMemberMappings {
-	return [NSDictionary dictionaryWithObjectsAndKeys:
-		[SWXMLStringMapping class], @"string",
-		[SWXMLDateMapping class], @"date",
-		[SWXMLCollectionMapping class], @"collection",
-		[SWXMLMemberMapping class], @"object",
-		[SWXMLNumberMapping class], @"number",
-		[SWXMLBooleanMapping class], @"boolean",
-		[SWXMLIncludeMapping class], @"include",
-		nil];
+	return @{@"string": [SWXMLStringMapping class],
+		@"date": [SWXMLDateMapping class],
+		@"collection": [SWXMLCollectionMapping class],
+		@"object": [SWXMLMemberMapping class],
+		@"number": [SWXMLNumberMapping class],
+		@"boolean": [SWXMLBooleanMapping class],
+		@"include": [SWXMLIncludeMapping class]};
 }
 
 - initWithURL: (NSURL*)loc {
@@ -55,24 +53,17 @@
 	return self;
 }
 
-- (void) dealloc {
-    [XMLParser release];
-	/*May not be allocated*/
-	[mappingAttributes release];
-	
-	[super dealloc];
-}
 
 - (NSDictionary*) parse {
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    [XMLParser parse];
-    [pool release];
+    @autoreleasepool {
+        [XMLParser parse];
+    }
 	
 	return self->objectMappings;
 }
 
 - (NSDictionary*) mappingAttributes {
-	return [[mappingAttributes retain] autorelease];
+	return mappingAttributes;
 }
 
 - (void) parserDidStartDocument:(NSXMLParser *)parser {
@@ -87,9 +78,9 @@
     //NSLog ([[@"Begin: " stringByAppendingString:elementName] stringByAppendingFormat:@" (%@ %@ %@)", namespaceURI, qualifiedName, attr]);
 
 	if (objectMapping != nil) {
-		Class MemberMapping = [memberMappingClasses objectForKey:elementName];
+		Class MemberMapping = memberMappingClasses[elementName];
 		if (MemberMapping != nil) {
-			[self->memberMappings addObject:[[(SWXMLMemberMapping*)[MemberMapping alloc] initWithAttributes:attr] autorelease]];
+			[self->memberMappings addObject:[(SWXMLMemberMapping*)[MemberMapping alloc] initWithAttributes:attr]];
 		} else {
 			NSLog (@"Unknown member type: %@", elementName);
 		}
@@ -99,12 +90,12 @@
 
     if ([elementName isEqualToString:@"mapping"]) {
 		/* Firstly */
-		self->objectMappings = [[NSMutableDictionary new] retain];
-		self->mappingAttributes = [attr retain];
+		self->objectMappings = [NSMutableDictionary new];
+		self->mappingAttributes = attr;
     } else if ([elementName isEqualToString:@"class"]) {
 		/* Set up a new object mapping */
 		self->objectMapping = [[SWXMLClassMapping alloc] initWithTag:[attr valueForKey:@"tag"] forClass:[attr valueForKey:@"name"] attributes:attr];
-		self->memberMappings = [[NSMutableArray new] retain];
+		self->memberMappings = [NSMutableArray new];
 	} else {
 		NSLog (@"Unknown tag: %@", elementName);
 	}
@@ -119,11 +110,9 @@
     } else if ([elementName isEqualToString:@"class"]) {
 		
 		[self->objectMapping setMembers:self->memberMappings];
-		[self->memberMappings release];
 		self->memberMappings = nil;
 		
 		[self->objectMappings setValue:self->objectMapping forKey:[self->objectMapping objectClassName]];
-		[self->objectMapping release];
 		self->objectMapping = nil;
     }
 }

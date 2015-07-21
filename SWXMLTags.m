@@ -25,7 +25,7 @@
 	[result replaceOccurrencesOfString:@"<"	withString:@"&lt;" options:0 range:NSMakeRange(0, [result length])];
 	[result replaceOccurrencesOfString:@">"	withString:@"&gt;" options:0 range:NSMakeRange(0, [result length])];
 	
-	return [result autorelease];
+	return result;
 }
 
 + (NSString*) tagNamed: (NSString*)name {
@@ -65,7 +65,7 @@
 	if (attributes == nil) return @"";
 	
 	id o, i = [attributes keyEnumerator];
-	NSMutableString *attrString = [[NSMutableString new] autorelease];
+	NSMutableString *attrString = [NSMutableString new];
 	
 	while ((o = [i nextObject]) !=nil) {
 		[attrString appendFormat:@" %@=\"%@\"", o, [attributes valueForKey:o]];

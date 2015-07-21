@@ -13,7 +13,7 @@
 
 @synthesize objectClassName = _objectClassName, filterClassName = _filterClassName, sortDescriptors	= _sortDescriptors;
 
-- initWithTag: (NSString*)tag keyPath: (NSString*)keyPath attributes: (NSDictionary*)attributes {
+- (instancetype) initWithTag: (NSString*)tag keyPath: (NSString*)keyPath attributes: (NSDictionary*)attributes {
 	self = [super initWithTag:tag keyPath:keyPath attributes:attributes];
 	
 	if (self) {
@@ -29,12 +29,12 @@
 				
 				BOOL ascending = YES;
 				if (components.count == 2) {
-					if ([[components objectAtIndex:1] isEqualToString:@"descending"]) {
+					if ([components[1] isEqualToString:@"descending"]) {
 						ascending = NO;
 					}
 				}
 				
-				[sortDescriptors addObject:[NSSortDescriptor sortDescriptorWithKey:[components objectAtIndex:0] ascending:ascending]];
+				[sortDescriptors addObject:[NSSortDescriptor sortDescriptorWithKey:components[0] ascending:ascending]];
 			}
 			
 			self.sortDescriptors = sortDescriptors;
@@ -69,7 +69,7 @@
 	SWXMLClassMapping * classMapping = nil;
 	
 	if (self.objectClassName) {
-		classMapping = [mapping.objectMappings objectForKey:self.objectClassName];
+		classMapping = (mapping.objectMappings)[self.objectClassName];
 	}
 	
 	NSString * buffer = [mapping serializeObject:collection withClassMapping:classMapping];

@@ -39,12 +39,13 @@
 
 @interface SWXMLMapping : NSObject
 
-@property(nonatomic,retain) NSDictionary * objectMappings;
-@property(nonatomic,retain) NSDictionary * metadata;
+@property(nonatomic,strong) NSDictionary * objectMappings;
+@property(nonatomic,strong) NSDictionary * metadata;
 
 + (SWXMLMapping *) mappingFromURL:(NSURL *)schemaURL;
 
-- initWithMapping:(SWXMLMapping *)mapping andMetadata:(NSDictionary *)metadata;
+- (instancetype) init NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithMapping:(SWXMLMapping *)mapping andMetadata:(NSDictionary *)metadata NS_DESIGNATED_INITIALIZER;
 - (SWXMLMapping *) mappingWithMetadata: (NSDictionary *)metadata;
 
 // Includes <?xml ... ?>

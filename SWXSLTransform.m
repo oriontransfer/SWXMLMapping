@@ -53,7 +53,7 @@
 	}
 }
 
-- (id)initWithURL:(NSURL *)url {
+- (instancetype)initWithURL:(NSURL *)url {
 	self = [super init];
 	
 	if (self) {
@@ -66,10 +66,8 @@
 
 - (void)dealloc
 {
-	self.baseURL = nil;
 	[self releaseStylesheet];
 	
-    [super dealloc];
 }
 
 - (NSData *) processDocument:(NSString *)xmlBuffer arguments:(NSDictionary *)arguments {
@@ -80,7 +78,7 @@
 	NSUInteger parameterOffset = 0;
 	for (NSString * key in arguments) {
 		parameters[parameterOffset] = [key UTF8String];
-		parameters[parameterOffset+1] = [(NSString *)[arguments objectForKey:key] UTF8String];
+		parameters[parameterOffset+1] = [(NSString *)arguments[key] UTF8String];
 		
 		parameterOffset += 2;
 	}
@@ -98,7 +96,7 @@
 	const xmlChar * contents = xmlOutputBufferGetContent(outputBuffer);
 	size_t size = xmlOutputBufferGetSize(outputBuffer);
 
-	NSData * result = [[[NSData alloc] initWithBytes:contents length:size] autorelease];
+	NSData * result = [[NSData alloc] initWithBytes:contents length:size];
 	
 	xmlOutputBufferClose(outputBuffer);
 	xmlFreeDoc(sourceDocument);

@@ -22,12 +22,12 @@
 
 }
 
-@property(nonatomic,retain) NSString * objectClassName;
-@property(nonatomic,retain) NSString * tag;
-@property(nonatomic,retain) NSArray * members;
-@property(nonatomic,retain) NSDictionary * attributes;
+@property(nonatomic,strong) NSString * objectClassName;
+@property(nonatomic,strong) NSString * tag;
+@property(nonatomic,strong) NSArray * members;
+@property(nonatomic,strong) NSDictionary * attributes;
 
-- initWithTag:(NSString*)tag forClass:(NSString*)objectClassName attributes:(NSDictionary *)attributes;
+- (instancetype) initWithTag:(NSString*)tag forClass:(NSString*)objectClassName attributes:(NSDictionary *)attributes NS_DESIGNATED_INITIALIZER;
 
 - (NSArray *)membersForObject:(id)object withMapping:(SWXMLMapping *)mapping;
 - (NSString *)serializeObject:(id)object withMapping:(SWXMLMapping *)mapping;

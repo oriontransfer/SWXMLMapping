@@ -17,12 +17,12 @@
 	NSDictionary *_attributes;
 }
 
-@property(nonatomic,retain) NSString * tag;
-@property(nonatomic,retain) NSString * keyPath;
-@property(nonatomic,retain) NSDictionary * attributes;
+@property(nonatomic,strong) NSString * tag;
+@property(nonatomic,strong) NSString * keyPath;
+@property(nonatomic,strong) NSDictionary * attributes;
 
-- initWithTag: (NSString*)tag keyPath: (NSString*)keyPath attributes: (NSDictionary*)attributes;
-- initWithAttributes: (NSDictionary*)attributes;
+- (instancetype) initWithTag: (NSString*)tag keyPath: (NSString*)keyPath attributes: (NSDictionary*)attributes NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithAttributes: (NSDictionary*)attributes;
 
 - (NSString*) serializedObjectMember:(id)object withMapping:(SWXMLMapping*)mapping;
 

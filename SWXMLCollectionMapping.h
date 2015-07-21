@@ -13,12 +13,12 @@
 @interface SWXMLCollectionMapping : SWXMLMemberMapping
 
 // Select only specific objects that match the given class name if specified:
-@property(nonatomic,retain) NSString * filterClassName;
+@property(nonatomic,strong) NSString * filterClassName;
 
 // Remap the class name of a given object with this name if specified:
-@property(nonatomic,retain) NSString * objectClassName;
+@property(nonatomic,strong) NSString * objectClassName;
 
 // How to sort the collection:
-@property(nonatomic,retain) NSArray * sortDescriptors;
+@property(nonatomic,strong) NSArray * sortDescriptors;
 
 @end

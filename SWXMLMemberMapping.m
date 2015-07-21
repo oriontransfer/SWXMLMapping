@@ -13,7 +13,7 @@
 
 @synthesize tag = _tag, keyPath = _keyPath, attributes = _attributes;
 
-- (id)initWithTag:(NSString *)tag keyPath:(NSString *)keyPath attributes:(NSDictionary *)attributes {
+- (instancetype)initWithTag:(NSString *)tag keyPath:(NSString *)keyPath attributes:(NSDictionary *)attributes {
 	self = [super init];
 	
 	if (self) {
@@ -25,15 +25,8 @@
 	return self;
 }
 
-- (void) dealloc {
-	self.tag = nil;
-	self.keyPath = nil;
-	self.attributes = nil;
-	
-	[super dealloc];
-}
 
-- initWithAttributes: (NSDictionary*)attributes {
+- (instancetype) initWithAttributes: (NSDictionary*)attributes {
 	return [self initWithTag:[attributes valueForKey:@"tag"] keyPath:[attributes valueForKey:@"keyPath"] attributes:attributes];
 }
 

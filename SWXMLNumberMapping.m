@@ -15,8 +15,8 @@
 	NSNumberFormatter * numberFormatter = nil;
 	NSNumber * number = [object valueForKeyPath:[self keyPath]];
 
-	numberFormatter = [[NSNumberFormatter new] autorelease];
-	NSString * currencyCode = [mapping.metadata objectForKey:@"currencyCode"];
+	numberFormatter = [NSNumberFormatter new];
+	NSString * currencyCode = (mapping.metadata)[@"currencyCode"];
 
 	if (currencyCode) {
 		numberFormatter.currencyCode = currencyCode;
@@ -41,7 +41,7 @@
 	}
 	
 	NSString * formattedNumber = [numberFormatter stringFromNumber:number];
-	NSDictionary * attributes = [NSDictionary dictionaryWithObject:[number stringValue] forKey:@"value"];
+	NSDictionary * attributes = @{@"value": [number stringValue]};
 	
 	return [SWXMLTags tagNamed:self.tag forValue:formattedNumber withAttributes:attributes];
 }

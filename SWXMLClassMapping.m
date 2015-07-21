@@ -14,7 +14,7 @@
 @synthesize objectClassName = _objectClassName, tag = _tag, members = _members, attributes = _attributes;
 
 - (NSArray *)membersForObject:(id)object withMapping:(SWXMLMapping *)mapping {
-	NSMutableArray * children = [[NSMutableArray new] autorelease];
+	NSMutableArray * children = [NSMutableArray new];
 	
 	for (SWXMLMemberMapping * memberMapping in self.members) {
 		NSString * child = [memberMapping serializedObjectMember:object withMapping:mapping];
@@ -30,8 +30,8 @@
 	NSArray * children = [self membersForObject:object withMapping:mapping];
 	NSDictionary * attributes = nil;
 	
-	if ([self.attributes objectForKey:@"id"]) {
-		id objectIdentificationKeyPath = [self.attributes objectForKey:@"id"];
+	if ((self.attributes)[@"id"]) {
+		id objectIdentificationKeyPath = (self.attributes)[@"id"];
 		
 		// Wee shortcut
 		if ([objectIdentificationKeyPath isEqualTo:@"managed-object"]) {
@@ -39,13 +39,13 @@
 		}
 		
 		id objectIdentification = [object valueForKeyPath:objectIdentificationKeyPath];
-		attributes = [NSDictionary dictionaryWithObject:objectIdentification forKey:@"id"];
+		attributes = @{@"id": objectIdentification};
 	}
 	
 	return [SWXMLTags tagNamed:self.tag forValue:[children componentsJoinedByString:@"\n"] withAttributes:attributes];
 }
 
-- initWithTag:(NSString*)tag forClass:(NSString*)className attributes:(NSDictionary *)attributes {
+- (instancetype) initWithTag:(NSString*)tag forClass:(NSString*)className attributes:(NSDictionary *)attributes {
 	self = [super init];
 	
 	if (self) {
@@ -57,12 +57,5 @@
 	return self;
 }
 
-- (void) dealloc {
-	self.tag = nil;
-	self.objectClassName = nil;
-	self.members = nil;
-	
-	[super dealloc];
-}
 
 @end

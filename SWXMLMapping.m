@@ -15,15 +15,15 @@
 @synthesize objectMappings = _objectMappings, metadata = _metadata;
 
 + (SWXMLMapping*) mappingFromURL:(NSURL*)schemaURL {
-	SWXMLMappingParser * parser = [[[SWXMLMappingParser alloc] initWithURL:schemaURL] autorelease];
-	SWXMLMapping * mapping = [[[SWXMLMapping alloc] init] autorelease];
+	SWXMLMappingParser * parser = [[SWXMLMappingParser alloc] initWithURL:schemaURL];
+	SWXMLMapping * mapping = [[SWXMLMapping alloc] init];
 	
 	mapping.objectMappings = [parser parse];
 	
 	return mapping;
 }
 
-- init {
+- (instancetype) init {
 	self = [super init];
 
 	if (self) {
@@ -33,7 +33,7 @@
 	return self;
 }
 
-- initWithMapping:(SWXMLMapping *)mapping andMetadata:(NSDictionary *)metadata {
+- (instancetype) initWithMapping:(SWXMLMapping *)mapping andMetadata:(NSDictionary *)metadata {
 	self = [super init];
 
 	if (self) {
@@ -44,13 +44,6 @@
 	return self;
 }
 
-- (void)dealloc
-{
-	self.objectMappings = nil;
-	self.metadata = nil;
-
-    [super dealloc];
-}
 
 - (SWXMLMapping *) mappingWithMetadata: (NSDictionary *)metadata {
 	return [[[self class] alloc] initWithMapping:self andMetadata:metadata];
@@ -103,7 +96,7 @@
 		// A class mapping may have been provided already, otherwise search for an appropriate one:
 		if (classMapping == nil) {
 			while (objectClass && objectClass != [NSObject class]) {
-				classMapping = [_objectMappings objectForKey:[objectClass className]];
+				classMapping = _objectMappings[[objectClass className]];
 				if (classMapping != nil)
 					break;
 				else

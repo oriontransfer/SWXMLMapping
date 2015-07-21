@@ -24,11 +24,11 @@
 	
 	NSString *tzName = [self.attributes valueForKey:@"timezone"];
 	if (tzName)
-		timezone = [[[NSTimeZone alloc] initWithName:tzName] autorelease];
+		timezone = [[NSTimeZone alloc] initWithName:tzName];
 	
 	NSString *lcName = [self.attributes valueForKey:@"locale"];
 	if (lcName)
-		locale = [[[NSLocale alloc] initWithLocaleIdentifier:lcName] autorelease];
+		locale = [[NSLocale alloc] initWithLocaleIdentifier:lcName];
 	
 	/* Even though locale isn't an NSDictionary, it still responds to objectForKey - I suspect this is the intended usage 
 		If not, it will probably be a bug and lead to WWIII or something else */

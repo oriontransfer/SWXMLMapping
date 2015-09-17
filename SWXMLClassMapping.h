@@ -27,6 +27,8 @@
 @property(nonatomic,strong) NSArray * members;
 @property(nonatomic,strong) NSDictionary * attributes;
 
+- (instancetype) init NS_UNAVAILABLE;
+
 - (instancetype) initWithTag:(NSString*)tag forClass:(NSString*)objectClassName attributes:(NSDictionary *)attributes NS_DESIGNATED_INITIALIZER;
 
 - (NSArray *)membersForObject:(id)object withMapping:(SWXMLMapping *)mapping;

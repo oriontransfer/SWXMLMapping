@@ -21,6 +21,8 @@
 @property(nonatomic,strong) NSString * keyPath;
 @property(nonatomic,strong) NSDictionary * attributes;
 
+- (instancetype) init NS_UNAVAILABLE;
+
 - (instancetype) initWithTag: (NSString*)tag keyPath: (NSString*)keyPath attributes: (NSDictionary*)attributes NS_DESIGNATED_INITIALIZER;
 - (instancetype) initWithAttributes: (NSDictionary*)attributes;
 

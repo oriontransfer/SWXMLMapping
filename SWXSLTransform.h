@@ -16,6 +16,8 @@
 /// The base URL that was used to load the stylesheet:
 @property(nonatomic,strong) NSURL * baseURL;
 
+- (instancetype) init NS_UNAVAILABLE;
+
 /// Initialize the XSL stylesheet from the given URL:
 - (instancetype) initWithURL:(NSURL *)url NS_DESIGNATED_INITIALIZER;
 

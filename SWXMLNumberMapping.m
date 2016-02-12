@@ -43,7 +43,7 @@
 	NSString * formattedNumber = [numberFormatter stringFromNumber:number];
 	NSDictionary * attributes = @{@"value": [number stringValue]};
 	
-	return [SWXMLTags tagNamed:self.tag forValue:formattedNumber withAttributes:attributes];
+	return [SWXMLTags tagNamed:self.tag forCDATA:formattedNumber withAttributes:attributes];
 }
 
 @end

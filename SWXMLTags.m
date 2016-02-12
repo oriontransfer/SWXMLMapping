@@ -79,6 +79,14 @@
 	return [NSString stringWithFormat:@"<%@%@>\n%@</%@>", name, [self formatAttributes:attributes], [self indent:value], name];
 }
 
++ (NSString*) tagNamed: (NSString*)name forCDATA: (NSString*)value withAttributes: (NSDictionary*)attributes {
+	if (value == nil) value = @"";
+
+	NSString * inner = [self encodeBasicXMLEntities:value];
+
+	return [NSString stringWithFormat:@"<%@%@>%@</%@>", name, [self formatAttributes:attributes], inner, name];
+}
+
 + (NSString*) tagNamed: (NSString*)name withAttributes: (NSDictionary*)attributes {
 	return [NSString stringWithFormat:@"<%@%@ />", name, [self formatAttributes:attributes]];
 }

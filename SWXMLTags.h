@@ -27,5 +27,7 @@
 + (NSString*) formatAttributes: (NSDictionary*)attributes;
 
 + (NSString*) tagNamed: (NSString*)name forValue: (NSString*)value withAttributes: (NSDictionary*)attributes;
++ (NSString*) tagNamed: (NSString*)name forCDATA: (NSString*)value withAttributes: (NSDictionary*)attributes;
+
 
 @end

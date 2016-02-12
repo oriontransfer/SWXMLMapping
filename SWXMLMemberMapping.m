@@ -7,7 +7,7 @@
 //
 
 #import "SWXMLMemberMapping.h"
-
+#import "SWXMLClassMapping.h"
 
 @implementation SWXMLMemberMapping
 
@@ -20,6 +20,8 @@
 		self.tag = tag;
 		self.keyPath = keyPath;
 		self.attributes = attributes;
+
+		self.objectClassName = [attributes valueForKey:@"class"];
 	}
 	
 	return self;
@@ -31,7 +33,13 @@
 }
 
 - (NSString*) serializedObjectMember:(id) object withMapping:(SWXMLMapping*)mapping {
-	return [mapping serializeObject:[object valueForKeyPath:self.keyPath]];
+	SWXMLClassMapping * classMapping = nil;
+	
+	if (self.objectClassName) {
+		classMapping = (mapping.objectMappings)[self.objectClassName];
+	}
+
+	return [mapping serializeObject:[object valueForKeyPath:self.keyPath] withClassMapping:classMapping];
 }
 
 @end

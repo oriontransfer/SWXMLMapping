@@ -8,8 +8,6 @@
 
 #import "SWXMLMemberMapping.h"
 
-@class SWXMLMemberMapping;
-
 @interface SWXMLNumberMapping : SWXMLMemberMapping {
 
 }

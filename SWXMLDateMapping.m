@@ -12,6 +12,7 @@
 @implementation SWXMLDateMapping
 
 - serializedObjectMember: (id)object withMapping: (SWXMLMapping*)mapping {
+	NSDateFormatter *dateFormatter = [NSDateFormatter new];
 	NSTimeZone *timezone = nil;
 	NSLocale *locale = nil;
 	NSDate *date = [object valueForKeyPath:[self keyPath]];
@@ -20,21 +21,19 @@
 	format = [self.attributes valueForKey:@"format"];
 	
 	if (!format)
-		format = @"%d-%m-%Y";
+		format = @"yyyy.MM.dd";
+
+	[dateFormatter setDateFormat:format];
 	
-	NSString *tzName = [self.attributes valueForKey:@"timezone"];
-	if (tzName)
-		timezone = [[NSTimeZone alloc] initWithName:tzName];
+	NSString *timezoneName = [self.attributes valueForKey:@"timezone"];
+	if (timezoneName)
+		dateFormatter.timeZone = [NSTimeZone timeZoneWithName:timezoneName];
 	
-	NSString *lcName = [self.attributes valueForKey:@"locale"];
-	if (lcName)
-		locale = [[NSLocale alloc] initWithLocaleIdentifier:lcName];
-	
-	/* Even though locale isn't an NSDictionary, it still responds to objectForKey - I suspect this is the intended usage 
-		If not, it will probably be a bug and lead to WWIII or something else */
-	NSString *formattedDate = [date descriptionWithCalendarFormat:format timeZone:timezone locale:(NSDictionary*)locale];
-	
-	return [SWXMLTags tagNamed:self.tag forCDATA:formattedDate];
+	NSString *localeName = [self.attributes valueForKey:@"locale"];
+	if (localeName)
+		dateFormatter.locale = [NSLocale localeWithLocaleIdentifier:localeName];
+
+	return [SWXMLTags tagNamed:self.tag forCDATA:[dateFormatter stringFromDate:date]];
 }
 
 @end

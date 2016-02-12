@@ -7,7 +7,6 @@
 //
 
 #import "SWXMLTags.h"
-#import "SWXMLMapping.h"
 
 @class SWXMLMapping;
 
@@ -20,6 +19,9 @@
 @property(nonatomic,strong) NSString * tag;
 @property(nonatomic,strong) NSString * keyPath;
 @property(nonatomic,strong) NSDictionary * attributes;
+
+// Remap the class name of a given object with this name if specified:
+@property(nonatomic,strong) NSString * objectClassName;
 
 - (instancetype) init NS_UNAVAILABLE;
 

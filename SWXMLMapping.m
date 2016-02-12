@@ -88,8 +88,6 @@
 		return [self serializeSet:object withClassMapping:classMapping];
 	else if ([object isKindOfClass:[NSArray class]])
 		return [self serializeArray:object withClassMapping:classMapping];
-	else if ([object isKindOfClass:[NSDictionary class]])
-		return [self serializeDictionary:object withClassMapping:classMapping];
 	else {
 		// We need to find the SWXMLClassMapping to serialize this object. The data structure stores Class => ObjectMapping*, so we need to traverse up the class heirarchy to get a more generic mapping object if a specific one does not exist.
 		
@@ -105,7 +103,7 @@
 		}
 		
 		if (classMapping == nil) {
-			NSLog (@"No object mapping for %@", [object className]);
+			NSLog(@"No object mapping for %@", [object className]);
 			return nil;
 		}
 		
@@ -121,17 +119,4 @@
 	return [self serializeEnumerator:array.objectEnumerator withClassMapping:classMapping];
 }
 
-- (NSString*) serializeDictionary: (NSDictionary*)dict withClassMapping:(SWXMLClassMapping *)classMapping {
-	return @"";
-}
-/*
-- (NSString*) tag {
-	return [[tag retain] autorelease];
-}
-
-- (void) setTag: (NSString*)newTag {
-	[tag autorelease];
-	tag = [newTag retain];
-}
-*/
 @end

@@ -58,8 +58,16 @@
 - (NSString*) serializeEnumerator:(NSEnumerator*)enumerator withClassMapping:(SWXMLClassMapping*)classMapping;
 - (NSString*) serializeSet:(NSSet*)set withClassMapping:(SWXMLClassMapping *)classMapping;
 - (NSString*) serializeArray:(NSArray*)array withClassMapping:(SWXMLClassMapping *)classMapping;
-- (NSString*) serializeDictionary:(NSDictionary*)dictionary withClassMapping:(SWXMLClassMapping *)classMapping;
 
-//- (NSString*) tag;
-//- (void) setTag: (NSString*)newTag;
 @end
+
+#import "SWXMLMemberMapping.h"
+#import "SWXSLTransform.h"
+#import "SWXMLStringMapping.h"
+#import "SWXMLNumberMapping.h"
+#import "SWXMLMappingParser.h"
+#import "SWXMLDateMapping.h"
+#import "SWXMLClassMapping.h"
+#import "SWXMLBooleanMapping.h"
+#import "SWXMLIncludeMapping.h"
+#import "SWXMLCollectionMapping.h"

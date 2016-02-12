@@ -7,7 +7,7 @@
 //
 
 #import "SWXMLNumberMapping.h"
-
+#import "SWXMLMapping.h"
 
 @implementation SWXMLNumberMapping
 

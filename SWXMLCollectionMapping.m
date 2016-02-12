@@ -7,7 +7,7 @@
 //
 
 #import "SWXMLCollectionMapping.h"
-
+#import "SWXMLClassMapping.h"
 
 @implementation SWXMLCollectionMapping
 
@@ -18,7 +18,6 @@
 	
 	if (self) {
 		self.filterClassName = [attributes valueForKey:@"filter"];
-		self.objectClassName = [attributes valueForKey:@"class"];
 		
 		if ([attributes valueForKey:@"sort"]) {
 			NSArray * arguments = [[attributes valueForKey:@"sort"] componentsSeparatedByString:@","];

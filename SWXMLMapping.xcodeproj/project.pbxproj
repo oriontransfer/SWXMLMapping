@@ -11,7 +11,7 @@
 		1FF555E509C0F8B6002DD583 /* SWXMLTags.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF555DD09C0F8B6002DD583 /* SWXMLTags.m */; };
 		1FF555E609C0F8B6002DD583 /* SWXMLMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FF555DE09C0F8B6002DD583 /* SWXMLMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1FF555E709C0F8B6002DD583 /* SWXMLMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF555DF09C0F8B6002DD583 /* SWXMLMapping.m */; };
-		1FF555E809C0F8B6002DD583 /* SWXMLMappingParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FF555E009C0F8B6002DD583 /* SWXMLMappingParser.h */; settings = {ATTRIBUTES = (); }; };
+		1FF555E809C0F8B6002DD583 /* SWXMLMappingParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FF555E009C0F8B6002DD583 /* SWXMLMappingParser.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1FF555E909C0F8B6002DD583 /* SWXMLMappingParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF555E109C0F8B6002DD583 /* SWXMLMappingParser.m */; };
 		1FF555EA09C0F8B6002DD583 /* SWXMLClassMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FF555E209C0F8B6002DD583 /* SWXMLClassMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1FF555EB09C0F8B6002DD583 /* SWXMLClassMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF555E309C0F8B6002DD583 /* SWXMLClassMapping.m */; };
@@ -27,8 +27,9 @@
 		1FF5560409C0F8C9002DD583 /* SWXMLNumberMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF555F809C0F8C9002DD583 /* SWXMLNumberMapping.m */; };
 		1FF5560509C0F8C9002DD583 /* SWXMLBooleanMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FF555F909C0F8C9002DD583 /* SWXMLBooleanMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1FF5560609C0F8C9002DD583 /* SWXMLBooleanMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FF555FA09C0F8C9002DD583 /* SWXMLBooleanMapping.m */; };
-		7E36B7CA14F3F482004FCDCE /* SWXMLIncludeMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E36B7C814F3F481004FCDCE /* SWXMLIncludeMapping.h */; };
+		7E36B7CA14F3F482004FCDCE /* SWXMLIncludeMapping.h in Headers */ = {isa = PBXBuildFile; fileRef = 7E36B7C814F3F481004FCDCE /* SWXMLIncludeMapping.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7E36B7CB14F3F482004FCDCE /* SWXMLIncludeMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 7E36B7C914F3F481004FCDCE /* SWXMLIncludeMapping.m */; };
+		7E667DCC1C6D765B00A1BAC5 /* SWXMLSelectMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E667DCB1C6D765B00A1BAC5 /* SWXMLSelectMapping.swift */; };
 		7E712BA11366CFC600CE48AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E712BA01366CFC600CE48AB /* Foundation.framework */; };
 		7ED328C315E24A940015EC20 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED328C215E24A940015EC20 /* CoreFoundation.framework */; };
 		7EDB061214F6A052009FC017 /* libexslt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDB061114F6A052009FC017 /* libexslt.dylib */; };
@@ -64,6 +65,7 @@
 		32DBCF5E0370ADEE00C91783 /* SWXMLMapping_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWXMLMapping_Prefix.pch; sourceTree = "<group>"; };
 		7E36B7C814F3F481004FCDCE /* SWXMLIncludeMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWXMLIncludeMapping.h; sourceTree = "<group>"; };
 		7E36B7C914F3F481004FCDCE /* SWXMLIncludeMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWXMLIncludeMapping.m; sourceTree = "<group>"; };
+		7E667DCB1C6D765B00A1BAC5 /* SWXMLSelectMapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWXMLSelectMapping.swift; sourceTree = "<group>"; };
 		7E712BA01366CFC600CE48AB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		7ED328C215E24A940015EC20 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
 		7EDB061114F6A052009FC017 /* libexslt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libexslt.dylib; path = /usr/lib/libexslt.dylib; sourceTree = "<absolute>"; };
@@ -167,6 +169,7 @@
 				1FF555FA09C0F8C9002DD583 /* SWXMLBooleanMapping.m */,
 				7E36B7C814F3F481004FCDCE /* SWXMLIncludeMapping.h */,
 				7E36B7C914F3F481004FCDCE /* SWXMLIncludeMapping.m */,
+				7E667DCB1C6D765B00A1BAC5 /* SWXMLSelectMapping.swift */,
 			);
 			name = "Member Mappings";
 			sourceTree = "<group>";
@@ -188,7 +191,6 @@
 			files = (
 				1FF555E409C0F8B6002DD583 /* SWXMLTags.h in Headers */,
 				1FF555E609C0F8B6002DD583 /* SWXMLMapping.h in Headers */,
-				1FF555E809C0F8B6002DD583 /* SWXMLMappingParser.h in Headers */,
 				1FF555EA09C0F8B6002DD583 /* SWXMLClassMapping.h in Headers */,
 				1FF555FB09C0F8C9002DD583 /* SWXMLMemberMapping.h in Headers */,
 				1FF555FD09C0F8C9002DD583 /* SWXMLStringMapping.h in Headers */,
@@ -196,6 +198,7 @@
 				1FF5560109C0F8C9002DD583 /* SWXMLCollectionMapping.h in Headers */,
 				1FF5560309C0F8C9002DD583 /* SWXMLNumberMapping.h in Headers */,
 				1FF5560509C0F8C9002DD583 /* SWXMLBooleanMapping.h in Headers */,
+				1FF555E809C0F8B6002DD583 /* SWXMLMappingParser.h in Headers */,
 				7E36B7CA14F3F482004FCDCE /* SWXMLIncludeMapping.h in Headers */,
 				7EE8801714F53D74005C05F3 /* SWXSLTransform.h in Headers */,
 			);
@@ -229,6 +232,7 @@
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0420;
 			};
 			buildConfigurationList = 1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "SWXMLMapping" */;
@@ -273,6 +277,7 @@
 				1FF555EB09C0F8B6002DD583 /* SWXMLClassMapping.m in Sources */,
 				1FF555FC09C0F8C9002DD583 /* SWXMLMemberMapping.m in Sources */,
 				1FF555FE09C0F8C9002DD583 /* SWXMLStringMapping.m in Sources */,
+				7E667DCC1C6D765B00A1BAC5 /* SWXMLSelectMapping.swift in Sources */,
 				1FF5560009C0F8C9002DD583 /* SWXMLDateMapping.m in Sources */,
 				1FF5560209C0F8C9002DD583 /* SWXMLCollectionMapping.m in Sources */,
 				1FF5560409C0F8C9002DD583 /* SWXMLNumberMapping.m in Sources */,
@@ -299,7 +304,9 @@
 		1DEB91AE08733DA50010E9CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 2;
 				FRAMEWORK_VERSION = A;
@@ -308,6 +315,7 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2/;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@rpath";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = SWXMLMapping;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
@@ -317,7 +325,9 @@
 		1DEB91AF08733DA50010E9CD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 2;
 				FRAMEWORK_VERSION = A;
@@ -326,6 +336,7 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2/;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "@rpath";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = SWXMLMapping;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = framework;
@@ -338,7 +349,7 @@
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 			};
@@ -351,7 +362,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 			};

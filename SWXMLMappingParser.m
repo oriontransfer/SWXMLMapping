@@ -12,6 +12,8 @@
 #import "SWXMLBooleanMapping.h"
 #import "SWXMLIncludeMapping.h"
 
+#import <SWXMLMapping/SWXMLMapping-Swift.h>
+
 @implementation SWXMLMappingParser
 + defaultMemberMappings {
 	return @{@"string": [SWXMLStringMapping class],
@@ -20,7 +22,9 @@
 		@"object": [SWXMLMemberMapping class],
 		@"number": [SWXMLNumberMapping class],
 		@"boolean": [SWXMLBooleanMapping class],
-		@"include": [SWXMLIncludeMapping class]};
+		@"include": [SWXMLIncludeMapping class],
+		@"select": [SWXMLSelectMapping class]
+	};
 }
 
 - initWithURL: (NSURL*)loc {

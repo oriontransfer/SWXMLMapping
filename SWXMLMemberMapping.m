@@ -13,7 +13,7 @@
 
 @synthesize tag = _tag, keyPath = _keyPath, attributes = _attributes;
 
-- (instancetype)initWithTag:(NSString *)tag keyPath:(NSString *)keyPath attributes:(NSDictionary *)attributes {
+- (instancetype)initWithTag:(NSString *)tag keyPath:(NSString *)keyPath attributes:(NSAttributeDictionary *)attributes {
 	self = [super init];
 	
 	if (self) {

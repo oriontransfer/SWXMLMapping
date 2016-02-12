@@ -8,9 +8,33 @@
 
 import Foundation
 
+@objc(SWXMLSelection)
+public protocol SWXMLSelection {
+	init(attributes: [String : String]!)
+
+	func mapObject(object: AnyObject!, withKeyPath keyPath: String!) -> AnyObject!
+}
+
+/*
+	This mapping allows you to make a selection by instantiating a class which manages the query against a object/keyPath relationship. The result is essentially a collection of items.
+	
+	<select keyPath="property">
+*/
 @objc(SWXMLSelectMapping)
 public class SWXMLSelectMapping: SWXMLMemberMapping {
-	func init!(tag: String!, keyPath: String!, attributes: [NSObject : AnyObject]!) {
-<#code#>
-}
+	let mappingClass: SWXMLSelection.Type
+
+	override init!(tag: String!, keyPath: String!, attributes: [String : String]!) {
+		mappingClass = NSClassFromString(attributes["class"]!) as! SWXMLSelection.Type
+
+		super.init(tag: tag, keyPath: keyPath, attributes: attributes)
+	}
+
+	override public func serializedObjectMember(object: AnyObject!, withMapping mapping: SWXMLMapping!) -> String! {
+		let mappingObject = mappingClass.init(attributes: self.attributes)
+
+		let mappedObject = mappingObject.mapObject(object, withKeyPath: self.keyPath)
+
+		return SWXMLTags.tagNamed(self.tag, forValue: mapping.serializeObject(mappedObject))
+	}
 }

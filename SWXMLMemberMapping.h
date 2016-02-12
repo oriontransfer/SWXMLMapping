@@ -10,22 +10,20 @@
 
 @class SWXMLMapping;
 
-@interface SWXMLMemberMapping : NSObject {
-	NSString *_tag;
-	NSString *_keyPath;
-	NSDictionary *_attributes;
-}
+typedef NSDictionary<NSString *, NSString *> NSAttributeDictionary;
+
+@interface SWXMLMemberMapping : NSObject
 
 @property(nonatomic,strong) NSString * tag;
 @property(nonatomic,strong) NSString * keyPath;
-@property(nonatomic,strong) NSDictionary * attributes;
+@property(nonatomic,strong) NSAttributeDictionary * attributes;
 
 // Remap the class name of a given object with this name if specified:
 @property(nonatomic,strong) NSString * objectClassName;
 
 - (instancetype) init NS_UNAVAILABLE;
 
-- (instancetype) initWithTag: (NSString*)tag keyPath: (NSString*)keyPath attributes: (NSDictionary*)attributes NS_DESIGNATED_INITIALIZER;
+- (instancetype) initWithTag: (NSString*)tag keyPath: (NSString*)keyPath attributes: (NSAttributeDictionary* )attributes NS_DESIGNATED_INITIALIZER;
 - (instancetype) initWithAttributes: (NSDictionary*)attributes;
 
 - (NSString*) serializedObjectMember:(id)object withMapping:(SWXMLMapping*)mapping;

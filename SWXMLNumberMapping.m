@@ -16,7 +16,7 @@
 	NSNumber * number = [object valueForKeyPath:[self keyPath]];
 
 	numberFormatter = [NSNumberFormatter new];
-	NSString * currencyCode = (mapping.metadata)[@"currencyCode"];
+	NSString * currencyCode = (NSString *)mapping.metadata[@"currencyCode"];
 
 	if (currencyCode) {
 		numberFormatter.currencyCode = currencyCode;

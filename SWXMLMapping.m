@@ -33,7 +33,7 @@
 	return self;
 }
 
-- (instancetype) initWithMapping:(SWXMLMapping *)mapping andMetadata:(NSDictionary *)metadata {
+- (instancetype) initWithMapping:(SWXMLMapping *)mapping andMetadata:(SWXMLMetadata *)metadata {
 	self = [super init];
 
 	if (self) {
@@ -45,7 +45,7 @@
 }
 
 
-- (SWXMLMapping *) mappingWithMetadata: (NSDictionary *)metadata {
+- (SWXMLMapping *) mappingWithMetadata: (SWXMLMetadata *)metadata {
 	return [[[self class] alloc] initWithMapping:self andMetadata:metadata];
 }
 

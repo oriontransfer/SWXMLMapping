@@ -37,16 +37,18 @@
 
 @class SWXMLClassMapping;
 
+typedef NSDictionary<NSString *, NSObject *> SWXMLMetadata;
+
 @interface SWXMLMapping : NSObject
 
 @property(nonatomic,strong) NSDictionary * objectMappings;
-@property(nonatomic,strong) NSDictionary * metadata;
+@property(nonatomic,strong) SWXMLMetadata * metadata;
 
 + (SWXMLMapping *) mappingFromURL:(NSURL *)schemaURL;
 
 - (instancetype) init NS_DESIGNATED_INITIALIZER;
-- (instancetype) initWithMapping:(SWXMLMapping *)mapping andMetadata:(NSDictionary *)metadata NS_DESIGNATED_INITIALIZER;
-- (SWXMLMapping *) mappingWithMetadata: (NSDictionary *)metadata;
+- (instancetype) initWithMapping:(SWXMLMapping *)mapping andMetadata:(SWXMLMetadata *)metadata NS_DESIGNATED_INITIALIZER;
+- (SWXMLMapping *) mappingWithMetadata: (SWXMLMetadata *)metadata;
 
 // Includes <?xml ... ?>
 - (NSString*) serialize:(id)root;

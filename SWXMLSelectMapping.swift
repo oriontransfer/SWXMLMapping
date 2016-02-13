@@ -10,7 +10,7 @@ import Foundation
 
 @objc(SWXMLSelection)
 public protocol SWXMLSelection {
-	init(attributes: [String : String]!)
+	init(attributes: [String : String]!, mapping: SWXMLMapping)
 
 	func mapObject(object: AnyObject!, withKeyPath keyPath: String!) -> AnyObject!
 }
@@ -31,7 +31,7 @@ public class SWXMLSelectMapping: SWXMLMemberMapping {
 	}
 
 	override public func serializedObjectMember(object: AnyObject!, withMapping mapping: SWXMLMapping!) -> String! {
-		let mappingObject = mappingClass.init(attributes: self.attributes)
+		let mappingObject = mappingClass.init(attributes: self.attributes, mapping: mapping)
 
 		let mappedObject = mappingObject.mapObject(object, withKeyPath: self.keyPath)
 

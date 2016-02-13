@@ -10,6 +10,7 @@
 
 @class SWXMLMemberMapping;
 
+// Formats value attribute according to ISO8601 (http://www.w3.org/TR/NOTE-datetime)
 @interface SWXMLDateMapping : SWXMLMemberMapping {
 
 }

@@ -79,34 +79,50 @@
 	return [self serializeObject:object withClassMapping:nil];
 }
 
+- (SWXMLClassMapping *)lookupClassMapping:(id)object
+{
+	// We need to find the SWXMLClassMapping to serialize this object. The data structure stores Class => ObjectMapping*, so we need to traverse up the class heirarchy to get a more generic mapping object if a specific one does not exist.
+	if ([object conformsToProtocol:@protocol(SWXMLMappedClass)]) {
+		NSString * mappingName = [object mappedClassName];
+
+		return _objectMappings[mappingName];
+	}
+
+	Class objectClass = [object class];
+
+	while (objectClass && objectClass != [NSObject class]) {
+		NSString * mappingClassName = [objectClass className];
+
+		// Handle Swift class names in the presence of legacy class names in mapping schemas:
+		mappingClassName = [[mappingClassName componentsSeparatedByString:@"."] lastObject];
+
+		SWXMLClassMapping * classMapping = _objectMappings[mappingClassName];
+
+		if (classMapping != nil)
+			return classMapping;
+
+		objectClass = [objectClass superclass];
+	}
+
+	return nil;
+}
+
 /* Serializes an arbitraty object to XML */
 - (NSString*) serializeObject:(id)object withClassMapping:(SWXMLClassMapping *)classMapping {
-	Class objectClass = [object class];
-	
 	/* Determine the type of object */
-	if ([object isKindOfClass:[NSSet class]])
+	if ([object isKindOfClass:[NSSet class]]) {
 		return [self serializeSet:object withClassMapping:classMapping];
-	else if ([object isKindOfClass:[NSArray class]])
+	} else if ([object isKindOfClass:[NSArray class]]) {
 		return [self serializeArray:object withClassMapping:classMapping];
-	else {
-		// We need to find the SWXMLClassMapping to serialize this object. The data structure stores Class => ObjectMapping*, so we need to traverse up the class heirarchy to get a more generic mapping object if a specific one does not exist.
-		
-		// A class mapping may have been provided already, otherwise search for an appropriate one:
-		if (classMapping == nil) {
-			while (objectClass && objectClass != [NSObject class]) {
-				classMapping = _objectMappings[[objectClass className]];
-				if (classMapping != nil)
-					break;
-				else
-					objectClass = [objectClass superclass];
-			}
-		}
-		
-		if (classMapping == nil) {
-			NSLog(@"No object mapping for %@", [object className]);
-			return nil;
-		}
-		
+	}
+
+	if (classMapping == nil)
+		classMapping = [self lookupClassMapping:object];
+
+	if (classMapping == nil) {
+		NSLog(@"No object mapping for %@", [object class]);
+		return nil;
+	} else {
 		return [classMapping serializeObject:object withMapping:self];
 	}
 }

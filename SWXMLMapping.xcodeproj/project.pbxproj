@@ -137,10 +137,10 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				1FF555DC09C0F8B6002DD583 /* SWXMLTags.h */,
-				1FF555DD09C0F8B6002DD583 /* SWXMLTags.m */,
 				1FF555DE09C0F8B6002DD583 /* SWXMLMapping.h */,
 				1FF555DF09C0F8B6002DD583 /* SWXMLMapping.m */,
+				1FF555DC09C0F8B6002DD583 /* SWXMLTags.h */,
+				1FF555DD09C0F8B6002DD583 /* SWXMLTags.m */,
 				1FF555E009C0F8B6002DD583 /* SWXMLMappingParser.h */,
 				1FF555E109C0F8B6002DD583 /* SWXMLMappingParser.m */,
 				1FF555E209C0F8B6002DD583 /* SWXMLClassMapping.h */,
@@ -352,7 +352,7 @@
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 			};
@@ -365,7 +365,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = macosx;
 			};

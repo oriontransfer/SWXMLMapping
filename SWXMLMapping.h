@@ -39,6 +39,10 @@
 
 typedef NSDictionary<NSString *, NSObject *> SWXMLMetadata;
 
+@protocol SWXMLMappedClass <NSObject>
+- (NSString *)mappedClassName;
+@end
+
 @interface SWXMLMapping : NSObject
 
 @property(nonatomic,strong) NSDictionary * objectMappings;

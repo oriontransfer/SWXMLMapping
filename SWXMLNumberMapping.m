@@ -15,35 +15,39 @@
 	NSNumberFormatter * numberFormatter = nil;
 	NSNumber * number = [object valueForKeyPath:[self keyPath]];
 
-	numberFormatter = [NSNumberFormatter new];
-	NSString * currencyCode = (NSString *)mapping.metadata[@"currencyCode"];
+	if (number) {
+		numberFormatter = [NSNumberFormatter new];
+		NSString * currencyCode = (NSString *)mapping.metadata[@"currencyCode"];
 
-	if (currencyCode) {
-		numberFormatter.currencyCode = currencyCode;
+		if (currencyCode) {
+			numberFormatter.currencyCode = currencyCode;
+		}
+		
+		NSString *format;
+		format = [self.attributes valueForKey:@"format"];
+		if ([format isEqualToString:@"currency"]) {
+			[numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+			//[numberFormatter setFormat:@"$#,###.00;0.00;($#,##0.00)"];
+		} else if ([format isEqualToString:@"decimal"]) {
+			//[numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
+			[numberFormatter setFormat:@"###0.00;0;-###0.00"];
+		} else if ([format isEqualToString:@"percent"]) {
+			[numberFormatter setNumberStyle:NSNumberFormatterPercentStyle];
+		} else if ([format isEqualToString:@"scientific"]) {
+			[numberFormatter setNumberStyle:NSNumberFormatterScientificStyle];
+		} else if ([format isEqualToString:@"integer"]) {
+			[numberFormatter setFormat:@"##"];
+		} else if (format != nil) {
+			[numberFormatter setFormat:format];
+		}
+		
+		NSString * formattedNumber = [numberFormatter stringFromNumber:number];
+		NSDictionary * attributes = @{@"value": [number stringValue]};
+		
+		return [SWXMLTags tagNamed:self.tag forCDATA:formattedNumber withAttributes:attributes];
+	} else {
+		return nil;
 	}
-	
-	NSString *format;
-	format = [self.attributes valueForKey:@"format"];
-	if ([format isEqualToString:@"currency"]) {
-		[numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-		//[numberFormatter setFormat:@"$#,###.00;0.00;($#,##0.00)"];
-	} else if ([format isEqualToString:@"decimal"]) {
-		//[numberFormatter setNumberStyle:NSNumberFormatterDecimalStyle];
-		[numberFormatter setFormat:@"###0.00;0;-###0.00"];
-	} else if ([format isEqualToString:@"percent"]) {
-		[numberFormatter setNumberStyle:NSNumberFormatterPercentStyle];
-	} else if ([format isEqualToString:@"scientific"]) {
-		[numberFormatter setNumberStyle:NSNumberFormatterScientificStyle];
-	} else if ([format isEqualToString:@"integer"]) {
-		[numberFormatter setFormat:@"##"];
-	} else if (format != nil) {
-		[numberFormatter setFormat:format];
-	}
-	
-	NSString * formattedNumber = [numberFormatter stringFromNumber:number];
-	NSDictionary * attributes = @{@"value": [number stringValue]};
-	
-	return [SWXMLTags tagNamed:self.tag forCDATA:formattedNumber withAttributes:attributes];
 }
 
 @end

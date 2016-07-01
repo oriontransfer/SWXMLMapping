@@ -27,14 +27,14 @@
 	};
 }
 
-- initWithURL: (NSURL*)loc {
+- (instancetype) initWithURL: (NSURL*)loc {
 	self = [super init];
 	
 	if (self) {
 		XMLParser = [[NSXMLParser alloc] initWithContentsOfURL:loc];
 		[XMLParser setShouldResolveExternalEntities:NO];
 		[XMLParser setShouldReportNamespacePrefixes:NO];
-		[XMLParser setDelegate:self];
+		XMLParser.delegate = self;
 		
 		memberMappingClasses = [[self class] defaultMemberMappings];
 	}
@@ -42,14 +42,14 @@
 	return self;
 }
 
-- initWithData: (NSData*)data {
+- (instancetype) initWithData: (NSData*)data {
 	self = [super init];
 	
 	if (self) {
 		XMLParser = [[NSXMLParser alloc] initWithData:data];
 		[XMLParser setShouldResolveExternalEntities:NO];
 		[XMLParser setShouldReportNamespacePrefixes:NO];
-		[XMLParser setDelegate:self];
+		XMLParser.delegate = self;
 
 		memberMappingClasses = [[self class] defaultMemberMappings];
 	}
@@ -113,22 +113,22 @@
 		return;
 	} else if ([elementName isEqualToString:@"class"]) {
 		
-		[self->objectMapping setMembers:self->memberMappings];
+		self->objectMapping.members = self->memberMappings;
 		self->memberMappings = nil;
 		
-		[self->objectMappings setValue:self->objectMapping forKey:[self->objectMapping objectClassName]];
+		[self->objectMappings setValue:self->objectMapping forKey:self->objectMapping.objectClassName];
 		self->objectMapping = nil;
 	}
 }
 
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
-	NSLog(@"Parse error at line %ld character %ld (%@)", [parser lineNumber], [parser columnNumber], parseError);
+	NSLog(@"Parse error at line %ld character %ld (%@)", parser.lineNumber, parser.columnNumber, parseError);
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)characters {
 	NSString * trimmed = [characters stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 	
-	if ([trimmed length] != 0) {
+	if (trimmed.length != 0) {
 		NSLog(@"Found characters: %@", trimmed);
 	}
 }

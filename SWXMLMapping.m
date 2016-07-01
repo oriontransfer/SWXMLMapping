@@ -94,7 +94,7 @@
 		NSString * mappingClassName = [objectClass className];
 
 		// Handle Swift class names in the presence of legacy class names in mapping schemas:
-		mappingClassName = [[mappingClassName componentsSeparatedByString:@"."] lastObject];
+		mappingClassName = [mappingClassName componentsSeparatedByString:@"."].lastObject;
 
 		SWXMLClassMapping * classMapping = _objectMappings[mappingClassName];
 

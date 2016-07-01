@@ -44,7 +44,7 @@
 	if (stylesheetURL) {
 		NSAssert(stylesheetURL.isFileURL, @"Stylesheet URL was not a local file!");
 		
-		const char * localPath = [stylesheetURL.path UTF8String];
+		const char * localPath = stylesheetURL.path.UTF8String;
 		_stylesheet = xsltParseStylesheetFile((const xmlChar *)localPath);
 		
 		if (_stylesheet == NULL) {
@@ -77,15 +77,15 @@
 	
 	NSUInteger parameterOffset = 0;
 	for (NSString * key in arguments) {
-		parameters[parameterOffset] = [key UTF8String];
-		parameters[parameterOffset+1] = [(NSString *)arguments[key] UTF8String];
+		parameters[parameterOffset] = key.UTF8String;
+		parameters[parameterOffset+1] = ((NSString *)arguments[key]).UTF8String;
 		
 		parameterOffset += 2;
 	}
 	
 	parameters[parameterOffset] = NULL;
 		
-	xmlDocPtr sourceDocument = xmlParseMemory([xmlBuffer UTF8String], [xmlBuffer lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
+	xmlDocPtr sourceDocument = xmlParseMemory(xmlBuffer.UTF8String, [xmlBuffer lengthOfBytesUsingEncoding:NSUTF8StringEncoding]);
 	
 	xmlDocPtr processedDocument = xsltApplyStylesheet((xsltStylesheetPtr)_stylesheet, sourceDocument, parameters);
 	

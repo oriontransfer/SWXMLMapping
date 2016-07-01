@@ -21,9 +21,9 @@
 + (NSString*)encodeBasicXMLEntities:(NSString*)string {
 	NSMutableString * result = [string mutableCopy];
 	
-	[result replaceOccurrencesOfString:@"&"	withString:@"&amp;" options:0 range:NSMakeRange(0, [result length])];
-	[result replaceOccurrencesOfString:@"<"	withString:@"&lt;" options:0 range:NSMakeRange(0, [result length])];
-	[result replaceOccurrencesOfString:@">"	withString:@"&gt;" options:0 range:NSMakeRange(0, [result length])];
+	[result replaceOccurrencesOfString:@"&"	withString:@"&amp;" options:0 range:NSMakeRange(0, result.length)];
+	[result replaceOccurrencesOfString:@"<"	withString:@"&lt;" options:0 range:NSMakeRange(0, result.length)];
+	[result replaceOccurrencesOfString:@">"	withString:@"&gt;" options:0 range:NSMakeRange(0, result.length)];
 	
 	return result;
 }

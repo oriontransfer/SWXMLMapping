@@ -15,8 +15,8 @@
 - (NSString *) standardDateString: (NSDate *)date {
 	NSDateFormatter *dateFormatter = [NSDateFormatter new];
 	NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
-	[dateFormatter setLocale:enUSPOSIXLocale];
-	[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ssZZZZZ"];
+	dateFormatter.locale = enUSPOSIXLocale;
+	dateFormatter.dateFormat = @"yyyy-MM-dd'T'HH:mm:ssZZZZZ";
 
 	return [dateFormatter stringFromDate:date];
 }
@@ -25,7 +25,7 @@
 	NSDateFormatter *dateFormatter = [NSDateFormatter new];
 	NSTimeZone *timezone = nil;
 	NSLocale *locale = nil;
-	NSDate *date = [object valueForKeyPath:[self keyPath]];
+	NSDate *date = [object valueForKeyPath:self.keyPath];
 
 	if (date) {
 		NSString *format;
@@ -34,7 +34,7 @@
 		if (!format)
 			format = @"yyyy-MM-dd";
 
-		[dateFormatter setDateFormat:format];
+		dateFormatter.dateFormat = format;
 		
 		NSString *timezoneName = [self.attributes valueForKey:@"timezone"];
 		if (timezoneName)

@@ -15,7 +15,7 @@
 	NSString *trueString = @"true", *falseString = @"false";
 	NSString *result;
 	
-	id obj = [object valueForKeyPath:[self keyPath]];
+	id obj = [object valueForKeyPath:self.keyPath];
 	if (obj == nil)
 		result = falseString;
 	else if ([obj isKindOfClass:[NSNumber class]]) {

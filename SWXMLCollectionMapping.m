@@ -44,7 +44,7 @@
 }
 
 - serializedObjectMember: (id)object withMapping: (SWXMLMapping*)mapping {
-	id collection = [object valueForKeyPath:[self keyPath]];
+	id collection = [object valueForKeyPath:self.keyPath];
 	
 	// This might be considered too simple as it won't catch derived classes, but it is fine for now...
 	if (self.filterClassName) {

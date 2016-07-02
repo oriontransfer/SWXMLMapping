@@ -34,6 +34,9 @@
 	
 	//NSURL *XMLURL;
 }
+
+- (instancetype) init NS_UNAVAILABLE;
+
 - (instancetype) initWithURL: (NSURL*)loc NS_DESIGNATED_INITIALIZER;
 - (instancetype) initWithData: (NSData*)data NS_DESIGNATED_INITIALIZER;
 

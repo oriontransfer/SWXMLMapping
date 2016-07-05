@@ -68,7 +68,10 @@
 	SWXMLClassMapping * classMapping = nil;
 	
 	if (self.objectClassName) {
-		classMapping = (mapping.objectMappings)[self.objectClassName];
+		classMapping = mapping.objectMappings[self.objectClassName];
+
+		if (classMapping == nil)
+			NSLog(@"Could not find specified mapping class: %@", self.objectClassName);
 	}
 	
 	NSString * buffer = [mapping serializeObject:collection withClassMapping:classMapping];

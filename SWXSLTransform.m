@@ -46,10 +46,8 @@
 		
 		const char * localPath = stylesheetURL.path.UTF8String;
 		_stylesheet = xsltParseStylesheetFile((const xmlChar *)localPath);
-		
-		if (_stylesheet == NULL) {
-			NSLog(@"Could not load stylesheet: %@", stylesheetURL);
-		}
+
+		NSAssert(_stylesheet != NULL, @"Could not load stylesheet: %@", stylesheetURL);
 	}
 }
 
@@ -67,7 +65,6 @@
 - (void)dealloc
 {
 	[self releaseStylesheet];
-	
 }
 
 - (NSData *) processDocument:(NSString *)xmlBuffer arguments:(NSDictionary *)arguments {

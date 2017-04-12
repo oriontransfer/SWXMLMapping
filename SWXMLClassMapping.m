@@ -8,6 +8,7 @@
 
 #import "SWXMLClassMapping.h"
 
+#import "SWXMLMemberMapping.h"
 
 @implementation SWXMLClassMapping
 

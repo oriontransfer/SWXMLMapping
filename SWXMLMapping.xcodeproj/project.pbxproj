@@ -32,11 +32,11 @@
 		7E667DCC1C6D765B00A1BAC5 /* SWXMLSelectMapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E667DCB1C6D765B00A1BAC5 /* SWXMLSelectMapping.swift */; };
 		7E712BA11366CFC600CE48AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7E712BA01366CFC600CE48AB /* Foundation.framework */; };
 		7ED328C315E24A940015EC20 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7ED328C215E24A940015EC20 /* CoreFoundation.framework */; };
-		7EDB061214F6A052009FC017 /* libexslt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDB061114F6A052009FC017 /* libexslt.dylib */; };
+		7EDBE2332BD8F7DE0049F43B /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDBE2322BD8F7DE0049F43B /* libxml2.tbd */; };
+		7EDBE2352BD8F7E70049F43B /* libxslt.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDBE2342BD8F7E70049F43B /* libxslt.tbd */; };
+		7EDBE2372BD8F7F50049F43B /* libexslt.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EDBE2362BD8F7F50049F43B /* libexslt.tbd */; };
 		7EE8801714F53D74005C05F3 /* SWXSLTransform.h in Headers */ = {isa = PBXBuildFile; fileRef = 7EE8801514F53D74005C05F3 /* SWXSLTransform.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7EE8801814F53D74005C05F3 /* SWXSLTransform.m in Sources */ = {isa = PBXBuildFile; fileRef = 7EE8801614F53D74005C05F3 /* SWXSLTransform.m */; };
-		7EE8801A14F54030005C05F3 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EE8801914F54030005C05F3 /* libxml2.dylib */; };
-		7EE8801C14F54038005C05F3 /* libxslt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EE8801B14F54038005C05F3 /* libxslt.dylib */; };
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 /* End PBXBuildFile section */
 
@@ -68,11 +68,11 @@
 		7E667DCB1C6D765B00A1BAC5 /* SWXMLSelectMapping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SWXMLSelectMapping.swift; sourceTree = "<group>"; };
 		7E712BA01366CFC600CE48AB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		7ED328C215E24A940015EC20 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = /System/Library/Frameworks/CoreFoundation.framework; sourceTree = "<absolute>"; };
-		7EDB061114F6A052009FC017 /* libexslt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libexslt.dylib; path = /usr/lib/libexslt.dylib; sourceTree = "<absolute>"; };
+		7EDBE2322BD8F7DE0049F43B /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		7EDBE2342BD8F7E70049F43B /* libxslt.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxslt.tbd; path = usr/lib/libxslt.tbd; sourceTree = SDKROOT; };
+		7EDBE2362BD8F7F50049F43B /* libexslt.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libexslt.tbd; path = usr/lib/libexslt.tbd; sourceTree = SDKROOT; };
 		7EE8801514F53D74005C05F3 /* SWXSLTransform.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWXSLTransform.h; sourceTree = "<group>"; };
 		7EE8801614F53D74005C05F3 /* SWXSLTransform.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWXSLTransform.m; sourceTree = "<group>"; };
-		7EE8801914F54030005C05F3 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = /usr/lib/libxml2.dylib; sourceTree = "<absolute>"; };
-		7EE8801B14F54038005C05F3 /* libxslt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxslt.dylib; path = /usr/lib/libxslt.dylib; sourceTree = "<absolute>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* SWXMLMapping.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SWXMLMapping.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -82,9 +82,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EDB061214F6A052009FC017 /* libexslt.dylib in Frameworks */,
-				7EE8801C14F54038005C05F3 /* libxslt.dylib in Frameworks */,
-				7EE8801A14F54030005C05F3 /* libxml2.dylib in Frameworks */,
+				7EDBE2372BD8F7F50049F43B /* libexslt.tbd in Frameworks */,
+				7EDBE2352BD8F7E70049F43B /* libxslt.tbd in Frameworks */,
+				7EDBE2332BD8F7DE0049F43B /* libxml2.tbd in Frameworks */,
 				7E712BA11366CFC600CE48AB /* Foundation.framework in Frameworks */,
 				7ED328C315E24A940015EC20 /* CoreFoundation.framework in Frameworks */,
 			);
@@ -116,9 +116,9 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7EE8801914F54030005C05F3 /* libxml2.dylib */,
-				7EE8801B14F54038005C05F3 /* libxslt.dylib */,
-				7EDB061114F6A052009FC017 /* libexslt.dylib */,
+				7EDBE2362BD8F7F50049F43B /* libexslt.tbd */,
+				7EDBE2342BD8F7E70049F43B /* libxslt.tbd */,
+				7EDBE2322BD8F7DE0049F43B /* libxml2.tbd */,
 				7E712BA01366CFC600CE48AB /* Foundation.framework */,
 				7ED328C215E24A940015EC20 /* CoreFoundation.framework */,
 			);
@@ -324,7 +324,7 @@
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -349,7 +349,7 @@
 				PRODUCT_NAME = SWXMLMapping;
 				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;

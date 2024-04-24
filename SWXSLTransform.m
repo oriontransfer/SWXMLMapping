@@ -9,6 +9,7 @@
 #import "SWXSLTransform.h"
 
 #include <libxslt/xslt.h>
+#include <libxslt/documents.h>
 #include <libxslt/transform.h>
 #include <libxslt/xsltutils.h>
 #include <libexslt/exslt.h>
@@ -44,10 +45,19 @@
 	if (stylesheetURL) {
 		NSAssert(stylesheetURL.isFileURL, @"Stylesheet URL was not a local file!");
 		
-		const char * localPath = stylesheetURL.path.UTF8String;
-		_stylesheet = xsltParseStylesheetFile((const xmlChar *)localPath);
-
-		NSAssert(_stylesheet != NULL, @"Could not load stylesheet: %@", stylesheetURL);
+		NSData * stylesheetData = [NSData dataWithContentsOfURL:stylesheetURL];
+		
+		xmlDocPtr stylesheetXMLDocument = xmlParseMemory(stylesheetData.bytes, (int)stylesheetData.length);
+		NSAssert(stylesheetXMLDocument != NULL, @"Could not load stylesheet: %@", stylesheetURL);
+		
+		_stylesheet = xsltParseStylesheetDoc(stylesheetXMLDocument);
+		
+		if (_stylesheet == NULL) {
+			// We are going to blow up, so free the unreferenced document:
+			xmlFreeDoc(stylesheetXMLDocument);
+		}
+		
+		NSAssert(_stylesheet != NULL, @"Could not parse stylesheet: %@", stylesheetURL);
 	}
 }
 
